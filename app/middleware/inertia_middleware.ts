@@ -21,6 +21,9 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
     const error = session?.flashMessages.get('error') as string
     const success = session?.flashMessages.get('success') as string
 
+    const sidebarCookie = ctx.request.cookie('sidebar_state') as string | undefined
+    const sidebarOpen: boolean = sidebarCookie === undefined || sidebarCookie === 'true'
+
     /**
      * Data shared with all Inertia pages. Make sure you are using
      * transformers for rich data-types like Models.
@@ -32,6 +35,7 @@ export default class InertiaMiddleware extends BaseInertiaMiddleware {
         success,
       }),
       user: ctx.inertia.always(auth?.user ? UserTransformer.transform(auth.user) : undefined),
+      sidebarOpen: ctx.inertia.always(sidebarOpen),
     }
   }
 

@@ -18,6 +18,42 @@ const routes = {
     tokens: [{"old":"/dashboard","type":0,"val":"dashboard","end":""}],
     types: placeholder as Registry['dashboard']['types'],
   },
+  'tags.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/tags',
+    tokens: [{"old":"/tags","type":0,"val":"tags","end":""}],
+    types: placeholder as Registry['tags.index']['types'],
+  },
+  'tags.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/tags/create',
+    tokens: [{"old":"/tags/create","type":0,"val":"tags","end":""},{"old":"/tags/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['tags.create']['types'],
+  },
+  'tags.store': {
+    methods: ["POST"],
+    pattern: '/tags',
+    tokens: [{"old":"/tags","type":0,"val":"tags","end":""}],
+    types: placeholder as Registry['tags.store']['types'],
+  },
+  'tags.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/tags/:id/edit',
+    tokens: [{"old":"/tags/:id/edit","type":0,"val":"tags","end":""},{"old":"/tags/:id/edit","type":1,"val":"id","end":""},{"old":"/tags/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['tags.edit']['types'],
+  },
+  'tags.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/tags/:id',
+    tokens: [{"old":"/tags/:id","type":0,"val":"tags","end":""},{"old":"/tags/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['tags.update']['types'],
+  },
+  'tags.destroy': {
+    methods: ["DELETE"],
+    pattern: '/tags/:id',
+    tokens: [{"old":"/tags/:id","type":0,"val":"tags","end":""},{"old":"/tags/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['tags.destroy']['types'],
+  },
   'new_account.create': {
     methods: ["GET","HEAD"],
     pattern: '/signup',

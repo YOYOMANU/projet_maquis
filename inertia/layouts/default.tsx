@@ -2,7 +2,6 @@ import { Data } from '@generated/data'
 import { toast, Toaster } from 'sonner'
 import { usePage } from '@inertiajs/react'
 import { ReactElement, useEffect } from 'react'
-import Header from '~/components/header'
 
 export default function Layout({ children }: { children: ReactElement<Data.SharedProps> }) {
   useEffect(() => {
@@ -18,9 +17,10 @@ export default function Layout({ children }: { children: ReactElement<Data.Share
     }
   })
 
+  console.log(children.props)
+
   return (
     <>
-      <Header />
       <main>{children}</main>
       <Toaster position="top-center" richColors closeButton />
     </>

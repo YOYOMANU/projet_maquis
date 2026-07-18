@@ -4,7 +4,10 @@
  */
 
 export const controllers = {
-  Dashboard: () => import('#controllers/dashboard_controller'),
-  NewAccount: () => import('#controllers/new_account_controller'),
+  NewAccount: () => import(#controllers/dashboard/dashboard_controllerler'),
   Session: () => import('#controllers/session_controller'),
+  dashboard: {
+    Tags: () => import('#controllers/dashboard/tags_controller'),
+    Dashboard: () => import('#controllers/dashboard/dashboard_controller'),
+  },
 }
