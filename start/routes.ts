@@ -10,9 +10,10 @@
 import { middleware } from '#start/kernel'
 import { controllers } from '#generated/controllers'
 import router from '@adonisjs/core/services/router'
+import DashboardController from '#controllers/dashboard_controller'
 
 router.on('/').renderInertia('home', {}).as('home')
-
+router.get('dashboard', [DashboardController, 'index']).as('dashboard')
 router
   .group(() => {
     router.get('signup', [controllers.NewAccount, 'create'])
