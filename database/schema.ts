@@ -7,9 +7,53 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
-export class TagSchema extends BaseModel {
+export class PlaceTagSchema extends BaseModel {
+  static $columns = ['placeId', 'tagId'] as const
+  $columns = PlaceTagSchema.$columns
+  @column()
+  declare placeId: number | null
+  @column()
+  declare tagId: number | null
+}
+
+export class PlaceSchema extends BaseModel {
+  static $columns = ['address', 'avgRating', 'coverPhoto', 'createdAt', 'description', 'id', 'latitude', 'longitude', 'name', 'priceRange', 'quartierId', 'reviewCount', 'slug', 'updatedAt', 'weightedScore'] as const
+  $columns = PlaceSchema.$columns
+  @column()
+  declare address: string | null
+  @column()
+  declare avgRating: number
+  @column()
+  declare coverPhoto: string | null
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column()
+  declare description: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare latitude: number | null
+  @column()
+  declare longitude: number | null
+  @column()
+  declare name: string
+  @column()
+  declare priceRange: string
+  @column()
+  declare quartierId: number | null
+  @column()
+  declare reviewCount: number
+  @column()
+  declare slug: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare weightedScore: number
+}
+
+export class QuartierSchema extends BaseModel {
   static $columns = ['createdAt', 'id', 'name', 'updatedAt'] as const
-  $columns = TagSchema.$columns
+  $columns = QuartierSchema.$columns
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
   @column({ isPrimary: true })
@@ -20,9 +64,58 @@ export class TagSchema extends BaseModel {
   declare updatedAt: DateTime | null
 }
 
+export class ReviewTagSchema extends BaseModel {
+  static $columns = ['reviewId', 'tagId'] as const
+  $columns = ReviewTagSchema.$columns
+  @column({ isPrimary: true })
+  declare reviewId: number
+  @column()
+  declare tagId: number
+}
+
+export class ReviewSchema extends BaseModel {
+  static $columns = ['comment', 'createdAt', 'dishName', 'id', 'placeId', 'rating', 'status', 'updatedAt', 'userId'] as const
+  $columns = ReviewSchema.$columns
+  @column()
+  declare comment: string
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column()
+  declare dishName: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare placeId: number | null
+  @column()
+  declare rating: number
+  @column()
+  declare status: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare userId: number | null
+}
+
+export class TagSchema extends BaseModel {
+  static $columns = ['createdAt', 'id', 'label', 'type', 'updatedAt'] as const
+  $columns = TagSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare label: string
+  @column()
+  declare type: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
 export class UserSchema extends BaseModel {
-  static $columns = ['createdAt', 'email', 'fullName', 'id', 'password', 'updatedAt'] as const
+  static $columns = ['avatarUrl', 'createdAt', 'email', 'fullName', 'id', 'isAdmin', 'password', 'updatedAt'] as const
   $columns = UserSchema.$columns
+  @column()
+  declare avatarUrl: string | null
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
   @column()
@@ -31,6 +124,8 @@ export class UserSchema extends BaseModel {
   declare fullName: string | null
   @column({ isPrimary: true })
   declare id: number
+  @column()
+  declare isAdmin: boolean
   @column({ serializeAs: null })
   declare password: string
   @column.dateTime({ autoCreate: true, autoUpdate: true })

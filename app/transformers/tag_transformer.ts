@@ -3,6 +3,6 @@ import { BaseTransformer } from '@adonisjs/core/transformers'
 
 export default class TagTransformer extends BaseTransformer<Tag> {
   toObject() {
-    return this.pick(this.resource, ['id', 'name'])
+    return this.pick(this.resource, ['id', 'label', 'type'])
   }
 }

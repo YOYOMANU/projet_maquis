@@ -12,6 +12,8 @@ type ExtractProps<T> =
 
 declare module '@adonisjs/inertia/types' {
   export interface InertiaPages {
+    'admin/tag/form': ExtractProps<(typeof import('../../inertia/pages/admin/tag/form.tsx'))['default']>
+    'admin/tag/index': ExtractProps<(typeof import('../../inertia/pages/admin/tag/index.tsx'))['default']>
     'auth/confirm-password': ExtractProps<(typeof import('../../inertia/pages/auth/confirm-password.tsx'))['default']>
     'auth/forgot-password': ExtractProps<(typeof import('../../inertia/pages/auth/forgot-password.tsx'))['default']>
     'auth/login': ExtractProps<(typeof import('../../inertia/pages/auth/login.tsx'))['default']>
@@ -27,7 +29,5 @@ declare module '@adonisjs/inertia/types' {
     'settings/appearance': ExtractProps<(typeof import('../../inertia/pages/settings/appearance.tsx'))['default']>
     'settings/profile': ExtractProps<(typeof import('../../inertia/pages/settings/profile.tsx'))['default']>
     'settings/security': ExtractProps<(typeof import('../../inertia/pages/settings/security.tsx'))['default']>
-    'admin/tag/index': ExtractProps<(typeof import('../../inertia/pages/admin/tag/index.tsx'))['default']>
-    'admin/tag/form': ExtractProps<(typeof import('../../inertia/pages/admin/tag/form.tsx'))['default']>
   }
 }

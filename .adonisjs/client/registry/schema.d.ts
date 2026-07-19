@@ -103,7 +103,43 @@ export interface Registry {
       errorResponse: unknown
     }
   }
-  'new_account.create': {
+  'profile.edit': {
+    methods: ["GET","HEAD"]
+    pattern: '/settings/profile'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'security.edit': {
+    methods: ["GET","HEAD"]
+    pattern: '/settings/security'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'appearence.edit': {
+    methods: ["GET","HEAD"]
+    pattern: '/settings/appearance'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'register': {
     methods: ["GET","HEAD"]
     pattern: '/signup'
     types: {
@@ -127,7 +163,7 @@ export interface Registry {
       errorResponse: unknown
     }
   }
-  'session.create': {
+  'login': {
     methods: ["GET","HEAD"]
     pattern: '/login'
     types: {
@@ -151,7 +187,7 @@ export interface Registry {
       errorResponse: unknown
     }
   }
-  'session.destroy': {
+  'logout': {
     methods: ["POST"]
     pattern: '/logout'
     types: {

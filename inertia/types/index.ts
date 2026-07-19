@@ -2,9 +2,41 @@ export type * from './auth'
 export type * from './navigation'
 export type * from './ui'
 
-export type Tags = {
+// export type Tags = {
+//   id: number
+//   name: string
+// }
+
+interface Tags {
   id: number
+  label: string
+  type: 'place_type' | 'ambiance'
+  createdAt: string | null
+  updatedAt: string | null
+}
+
+export type Review = {
+  id: string
+  photoLabel: string
+  placeName: string
+  placeMeta: string
+  rating: number // 1-5, sert à générer les étoiles
+  tags: Tags[]
+  text: string
+  authorName: string
+  timeAgo: string
+  addedTo?: string
+}
+
+export type TrendEntry = {
+  rank: number
   name: string
+  score: number
+}
+
+export type PopularPlace = {
+  name: string
+  duration: string
 }
 
 export type PaginatedCollection<T> = {

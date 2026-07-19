@@ -4,10 +4,14 @@
  */
 
 export const controllers = {
-  NewAccount: () => import(#controllers/dashboard/dashboard_controllerler'),
-  Session: () => import('#controllers/session_controller'),
   dashboard: {
-    Tags: () => import('#controllers/dashboard/tags_controller'),
     Dashboard: () => import('#controllers/dashboard/dashboard_controller'),
+    Tags: () => import('#controllers/dashboard/tags_controller'),
+  },
+  NewAccount: () => import('#controllers/new_account_controller'),
+  Session: () => import('#controllers/session_controller'),
+  settings: {
+    Profile: () => import('#controllers/settings/profile_controller'),
+    Security: () => import('#controllers/settings/security_controller'),
   },
 }

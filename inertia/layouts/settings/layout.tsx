@@ -1,3 +1,4 @@
+import { routes } from '@generated/registry'
 import { Link } from '@inertiajs/react'
 import type { PropsWithChildren } from 'react'
 import Heading from '~/components/heading'
@@ -5,25 +6,22 @@ import { Button } from '~/components/ui/button'
 import { Separator } from '~/components/ui/separator'
 import { useCurrentUrl } from '~/hooks/use-current-url'
 import { cn, toUrl } from '~/lib/utils'
-// import { edit as editAppearance } from '@/routes/appearance';
-// import { edit } from '@/routes/profile';
-// import { edit as editSecurity } from '@/routes/security';
 import type { NavItem } from '~/types/index'
 
 const sidebarNavItems: NavItem[] = [
   {
     title: 'Profile',
-    href: 'edit()',
+    href: routes['profile.edit'].pattern,
     icon: null,
   },
   {
     title: 'Security',
-    href: 'editSecurity()',
+    href: routes['security.edit'].pattern,
     icon: null,
   },
   {
     title: 'Appearance',
-    href: 'editAppearance()',
+    href: routes['appearence.edit'].pattern,
     icon: null,
   },
 ]

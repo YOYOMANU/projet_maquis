@@ -1,4 +1,3 @@
-import { Link, router } from '@inertiajs/react'
 import { LogOut, Settings } from 'lucide-react'
 import {
   DropdownMenuGroup,
@@ -9,6 +8,8 @@ import {
 import { UserInfo } from '~/components/user-info'
 import { useMobileNavigation } from '~/hooks/use-mobile-navigation'
 import { User } from '../types/index'
+import { Link } from '@adonisjs/inertia/react'
+import { router } from '@inertiajs/react'
 
 type Props = {
   user: User
@@ -32,7 +33,12 @@ export function UserMenuContent({ user }: Props) {
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
         <DropdownMenuItem asChild>
-          <Link className="block w-full cursor-pointer" href={''} prefetch onClick={cleanup}>
+          <Link
+            route="profile.edit"
+            className="block w-full cursor-pointer"
+            prefetch
+            onClick={cleanup}
+          >
             <Settings className="mr-2" />
             Settings
           </Link>
@@ -42,7 +48,7 @@ export function UserMenuContent({ user }: Props) {
       <DropdownMenuItem asChild>
         <Link
           className="block w-full cursor-pointer"
-          href={''}
+          route="logout"
           as="button"
           onClick={handleLogout}
           data-test="logout-button"

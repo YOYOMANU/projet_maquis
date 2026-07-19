@@ -1,6 +1,7 @@
-import { Form, Head } from '@inertiajs/react'
+import { Form } from '@adonisjs/inertia/react'
+import { routes } from '@generated/registry'
+import { Head } from '@inertiajs/react'
 import InputError from '~/components/input-error'
-import PasskeyVerify from '~/components/passkey-verify'
 import PasswordInput from '~/components/password-input'
 import TextLink from '~/components/text-link'
 import { Button } from '~/components/ui/button'
@@ -8,6 +9,7 @@ import { Checkbox } from '~/components/ui/checkbox'
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
 import { Spinner } from '~/components/ui/spinner'
+import AuthLayout from '~/layouts/auth-layout'
 
 type Props = {
   status?: string
@@ -19,13 +21,7 @@ export default function Login({ status, canResetPassword }: Props) {
     <>
       <Head title="Log in" />
 
-      <PasskeyVerify />
-
-      <Form
-        // {...store.form()}
-        resetOnSuccess={['password']}
-        className="flex flex-col gap-6"
-      >
+      <Form route="session.store" resetOnSuccess={['password']} className="flex flex-col gap-6">
         {({ processing, errors }) => (
           <>
             <div className="grid gap-6">
@@ -87,10 +83,7 @@ export default function Login({ status, canResetPassword }: Props) {
 
             <div className="text-center text-sm text-muted-foreground">
               Don't have an account?{' '}
-              <TextLink
-                // href={register()}
-                tabIndex={5}
-              >
+              <TextLink href={routes.register.pattern} tabIndex={5}>
                 Sign up
               </TextLink>
             </div>
@@ -105,7 +98,11 @@ export default function Login({ status, canResetPassword }: Props) {
   )
 }
 
-Login.layout = {
-  title: 'Log in to your account',
-  description: 'Enter your email and password below to log in',
-}
+Login.layout = (page: React.ReactNode) => (
+  <AuthLayout
+    title="Log in to your account"
+    description="Enter your email and password below to log in"
+  >
+    {page}
+  </AuthLayout>
+)

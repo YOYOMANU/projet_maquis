@@ -54,11 +54,29 @@ const routes = {
     tokens: [{"old":"/tags/:id","type":0,"val":"tags","end":""},{"old":"/tags/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['tags.destroy']['types'],
   },
-  'new_account.create': {
+  'profile.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/settings/profile',
+    tokens: [{"old":"/settings/profile","type":0,"val":"settings","end":""},{"old":"/settings/profile","type":0,"val":"profile","end":""}],
+    types: placeholder as Registry['profile.edit']['types'],
+  },
+  'security.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/settings/security',
+    tokens: [{"old":"/settings/security","type":0,"val":"settings","end":""},{"old":"/settings/security","type":0,"val":"security","end":""}],
+    types: placeholder as Registry['security.edit']['types'],
+  },
+  'appearence.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/settings/appearance',
+    tokens: [{"old":"/settings/appearance","type":0,"val":"settings","end":""},{"old":"/settings/appearance","type":0,"val":"appearance","end":""}],
+    types: placeholder as Registry['appearence.edit']['types'],
+  },
+  'register': {
     methods: ["GET","HEAD"],
     pattern: '/signup',
     tokens: [{"old":"/signup","type":0,"val":"signup","end":""}],
-    types: placeholder as Registry['new_account.create']['types'],
+    types: placeholder as Registry['register']['types'],
   },
   'new_account.store': {
     methods: ["POST"],
@@ -66,11 +84,11 @@ const routes = {
     tokens: [{"old":"/signup","type":0,"val":"signup","end":""}],
     types: placeholder as Registry['new_account.store']['types'],
   },
-  'session.create': {
+  'login': {
     methods: ["GET","HEAD"],
     pattern: '/login',
     tokens: [{"old":"/login","type":0,"val":"login","end":""}],
-    types: placeholder as Registry['session.create']['types'],
+    types: placeholder as Registry['login']['types'],
   },
   'session.store': {
     methods: ["POST"],
@@ -78,11 +96,11 @@ const routes = {
     tokens: [{"old":"/login","type":0,"val":"login","end":""}],
     types: placeholder as Registry['session.store']['types'],
   },
-  'session.destroy': {
+  'logout': {
     methods: ["POST"],
     pattern: '/logout',
     tokens: [{"old":"/logout","type":0,"val":"logout","end":""}],
-    types: placeholder as Registry['session.destroy']['types'],
+    types: placeholder as Registry['logout']['types'],
   },
 } as const satisfies Record<string, AdonisEndpoint>
 

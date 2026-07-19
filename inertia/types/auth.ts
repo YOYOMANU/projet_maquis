@@ -1,10 +1,11 @@
 export type User = {
-  createdAt: string | null
-  email: string
-  fullName: string | null
   id: number
-  updatedAt: string | null
+  fullName: string | null
+  email: string
+  avatar?: string
   initials: string
+  createdAt: string | null
+  updatedAt: string | null
 }
 
 export type Auth = {

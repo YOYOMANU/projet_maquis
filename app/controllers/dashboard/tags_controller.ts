@@ -9,7 +9,9 @@ export default class TagsController {
    */
   async index({ inertia }: HttpContext) {
     const tags = await Tag.all()
-    return inertia.render('admin/tag/index', { tags })
+    console.log(tags)
+
+    return inertia.render('admin/tag/index', { tags: TagTransformer.transform(tags) })
   }
 
   /**

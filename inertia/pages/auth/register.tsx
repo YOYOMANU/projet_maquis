@@ -1,4 +1,6 @@
-import { Form, Head } from '@inertiajs/react'
+import { Form } from '@adonisjs/inertia/react'
+import { routes } from '@generated/registry'
+import { Head } from '@inertiajs/react'
 import InputError from '~/components/input-error'
 import PasswordInput from '~/components/password-input'
 import TextLink from '~/components/text-link'
@@ -6,16 +8,14 @@ import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
 import { Spinner } from '~/components/ui/spinner'
+import AuthLayout from '~/layouts/auth-layout'
 
-type Props = {
-  passwordRules: string
-}
-
-export default function Register({ passwordRules }: Props) {
+export default function Register() {
   return (
     <>
       <Head title="Register" />
       <Form
+        route="new_account.store"
         // {...store.form()}
         resetOnSuccess={['password', 'password_confirmation']}
         disableWhileProcessing
@@ -25,18 +25,18 @@ export default function Register({ passwordRules }: Props) {
           <>
             <div className="grid gap-6">
               <div className="grid gap-2">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="fullName">Full name</Label>
                 <Input
-                  id="name"
+                  id="fullName"
                   type="text"
                   required
                   autoFocus
                   tabIndex={1}
-                  autoComplete="name"
-                  name="name"
+                  autoComplete="fullName"
+                  name="fullName"
                   placeholder="Full name"
                 />
-                <InputError message={errors.name} className="mt-2" />
+                <InputError message={errors.fullName} className="mt-2" />
               </div>
 
               <div className="grid gap-2">
@@ -62,23 +62,21 @@ export default function Register({ passwordRules }: Props) {
                   autoComplete="new-password"
                   name="password"
                   placeholder="Password"
-                  passwordrules={passwordRules}
                 />
                 <InputError message={errors.password} />
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="password_confirmation">Confirm password</Label>
+                <Label htmlFor="passwordConfirmation">Confirm password</Label>
                 <PasswordInput
-                  id="password_confirmation"
+                  id="passwordConfirmation"
                   required
                   tabIndex={4}
                   autoComplete="new-password"
-                  name="password_confirmation"
+                  name="passwordConfirmation"
                   placeholder="Confirm password"
-                  passwordrules={passwordRules}
                 />
-                <InputError message={errors.password_confirmation} />
+                <InputError message={errors.passwordConfirmation} />
               </div>
 
               <Button
@@ -94,10 +92,7 @@ export default function Register({ passwordRules }: Props) {
 
             <div className="text-center text-sm text-muted-foreground">
               Already have an account?{' '}
-              <TextLink
-                // href={login()}
-                tabIndex={6}
-              >
+              <TextLink href={routes.login.pattern} tabIndex={6}>
                 Log in
               </TextLink>
             </div>
@@ -108,7 +103,11 @@ export default function Register({ passwordRules }: Props) {
   )
 }
 
-Register.layout = {
-  title: 'Create an account',
-  description: 'Enter your details below to create your account',
-}
+Register.layout = (page: React.ReactNode) => (
+  <AuthLayout
+    title="Create an account"
+    description="Enter your details below to create your account"
+  >
+    {page}
+  </AuthLayout>
+)

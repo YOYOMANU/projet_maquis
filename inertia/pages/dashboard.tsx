@@ -1,8 +1,9 @@
 import { routes } from '@generated/registry'
 import { Head } from '@inertiajs/react'
 import { PlaceholderPattern } from '~/components/placeholder-pattern'
+import { withAppLayout } from '~/layouts/app-layout'
 
-export default function Dashboard() {
+export function Dashboard() {
   return (
     <>
       <Head title="Dashboard" />
@@ -26,11 +27,4 @@ export default function Dashboard() {
   )
 }
 
-Dashboard.layout = {
-  breadcrumbs: [
-    {
-      title: 'Dashboard',
-      href: routes.dashboard.pattern,
-    },
-  ],
-}
+export default withAppLayout([{ title: 'Dashboard', href: '/dashboard' }], Dashboard)

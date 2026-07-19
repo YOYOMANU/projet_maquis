@@ -12,13 +12,22 @@ export interface ApiDefinition {
     update: typeof routes['tags.update']
     destroy: typeof routes['tags.destroy']
   }
+  profile: {
+    edit: typeof routes['profile.edit']
+  }
+  security: {
+    edit: typeof routes['security.edit']
+  }
+  appearence: {
+    edit: typeof routes['appearence.edit']
+  }
+  register: typeof routes['register']
   newAccount: {
-    create: typeof routes['new_account.create']
     store: typeof routes['new_account.store']
   }
+  login: typeof routes['login']
   session: {
-    create: typeof routes['session.create']
     store: typeof routes['session.store']
-    destroy: typeof routes['session.destroy']
   }
+  logout: typeof routes['logout']
 }

@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Button onClick={() => router.visit(routes.dashboard.pattern)}>Dashboard</Button>
+      <Button onClick={() => router.visit(routes['new_account.create'].pattern)}>Dashboard</Button>
       <FeedLayout />
     </>
   )

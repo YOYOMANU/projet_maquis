@@ -1,4 +1,5 @@
 import { Link } from '@adonisjs/inertia/react'
+import { Data } from '@generated/data'
 import { routes } from '@generated/registry'
 import { EditIcon, PlusIcon, TrashIcon } from 'lucide-react'
 import { Button } from '~/components/ui/button'
@@ -11,7 +12,7 @@ import {
   TableRow,
 } from '~/components/ui/table'
 import { withAppLayout } from '~/layouts/app-layout'
-import { Tags } from '~/types/index'
+import { InertiaProps } from '~/types'
 import { BreadcrumbItem } from '~/types/navigation'
 
 const breadCrumbs: BreadcrumbItem[] = [
@@ -21,9 +22,7 @@ const breadCrumbs: BreadcrumbItem[] = [
   },
 ]
 
-type Props = {
-  tags: Tags[]
-}
+type Props = InertiaProps<{ tags: Data.Tag[] }>
 
 export default withAppLayout(breadCrumbs, ({ tags }: Props) => {
   return (
@@ -32,13 +31,14 @@ export default withAppLayout(breadCrumbs, ({ tags }: Props) => {
         <TableRow>
           <TableHead>ID</TableHead>
           <TableHead>Nom</TableHead>
+          <TableHead>Type</TableHead>
           <TableHead>Actions</TableHead>
         </TableRow>
       </TableHeader>
 
       <TableBody>
         <TableRow>
-          <TableCell colSpan={3}>
+          <TableCell colSpan={4}>
             <Button asChild variant="outline" className="w-full">
               <Link route="tags.create">
                 <PlusIcon />
@@ -52,9 +52,10 @@ export default withAppLayout(breadCrumbs, ({ tags }: Props) => {
             <TableCell>{item.id}</TableCell>
             <TableCell>
               <Link route="tags.edit" routeParams={{ id: item.id }} className="hover:underline">
-                {item.name}
+                {item.label}
               </Link>
             </TableCell>
+            <TableCell>{item.type}</TableCell>
             <TableCell>
               <div className="item-center flex justify-end gap-2">
                 <Button asChild size="icon" variant="outline">

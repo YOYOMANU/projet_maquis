@@ -13,6 +13,8 @@ import DashboardController from '#controllers/dashboard/dashboard_controller'
 import SessionController from '#controllers/session_controller'
 import NewAccountController from '#controllers/new_account_controller'
 import TagsController from '#controllers/dashboard/tags_controller'
+import ProfileController from '#controllers/settings/profile_controller'
+import SecurityController from '#controllers/settings/security_controller'
 
 router.on('/').renderInertia('home', {}).as('home')
 router.get('dashboard', [DashboardController, 'index']).as('dashboard')
@@ -21,16 +23,34 @@ router.resource('tags', TagsController).except(['show'])
 
 router
   .group(() => {
-    router.get('signup', [NewAccountController, 'create'])
+    router.get('settings/profile', [ProfileController, 'edit']).as('profile.edit')
+    // router.patch('settings/profile', [ProfileController, 'update']).as('profile.update')
+    // router.post('settings/avatar', [ProfileController, 'updateAvatar']).as('profile.update.avatar')
+    // router.delete('settings/avatar', [ProfileController, 'destroyAvatar']).as('profile.destroy.avatar')
+  })
+  .use(middleware.auth())
+
+router
+  .group(() => {
+    // router.delete('settings/profile', [ProfileController, 'destroy']).as('profile.destroy')
+    router.get('settings/security', [SecurityController, 'edit']).as('security.edit')
+    // router.put('settings/password', [ProfileController, 'update']).as('user-password.update')
+    router.on('settings/appearance').renderInertia('settings/appearance', {}).as('appearence.edit')
+  })
+  .use(middleware.auth())
+
+router
+  .group(() => {
+    router.get('signup', [NewAccountController, 'create']).as('register')
     router.post('signup', [NewAccountController, 'store'])
 
-    router.get('login', [SessionController, 'create'])
+    router.get('login', [SessionController, 'create']).as('login')
     router.post('login', [SessionController, 'store'])
   })
   .use(middleware.guest())
 
 router
   .group(() => {
-    router.post('logout', [SessionController, 'destroy'])
+    router.post('logout', [SessionController, 'destroy']).as('logout')
   })
   .use(middleware.auth())

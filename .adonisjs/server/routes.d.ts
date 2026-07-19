@@ -12,11 +12,14 @@ export type ScannedRoutes = {
     'tags.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'tags.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'tags.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'new_account.create': { paramsTuple?: []; params?: {} }
+    'profile.edit': { paramsTuple?: []; params?: {} }
+    'security.edit': { paramsTuple?: []; params?: {} }
+    'appearence.edit': { paramsTuple?: []; params?: {} }
+    'register': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
-    'session.create': { paramsTuple?: []; params?: {} }
+    'login': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
-    'session.destroy': { paramsTuple?: []; params?: {} }
+    'logout': { paramsTuple?: []; params?: {} }
   }
   GET: {
     'home': { paramsTuple?: []; params?: {} }
@@ -24,8 +27,11 @@ export type ScannedRoutes = {
     'tags.index': { paramsTuple?: []; params?: {} }
     'tags.create': { paramsTuple?: []; params?: {} }
     'tags.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'new_account.create': { paramsTuple?: []; params?: {} }
-    'session.create': { paramsTuple?: []; params?: {} }
+    'profile.edit': { paramsTuple?: []; params?: {} }
+    'security.edit': { paramsTuple?: []; params?: {} }
+    'appearence.edit': { paramsTuple?: []; params?: {} }
+    'register': { paramsTuple?: []; params?: {} }
+    'login': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
     'home': { paramsTuple?: []; params?: {} }
@@ -33,14 +39,17 @@ export type ScannedRoutes = {
     'tags.index': { paramsTuple?: []; params?: {} }
     'tags.create': { paramsTuple?: []; params?: {} }
     'tags.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'new_account.create': { paramsTuple?: []; params?: {} }
-    'session.create': { paramsTuple?: []; params?: {} }
+    'profile.edit': { paramsTuple?: []; params?: {} }
+    'security.edit': { paramsTuple?: []; params?: {} }
+    'appearence.edit': { paramsTuple?: []; params?: {} }
+    'register': { paramsTuple?: []; params?: {} }
+    'login': { paramsTuple?: []; params?: {} }
   }
   POST: {
     'tags.store': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
-    'session.destroy': { paramsTuple?: []; params?: {} }
+    'logout': { paramsTuple?: []; params?: {} }
   }
   PUT: {
     'tags.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
