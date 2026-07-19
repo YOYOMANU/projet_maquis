@@ -1,6 +1,6 @@
-import { routes } from '@generated/registry'
 import { Link } from '@inertiajs/react'
 import type { PropsWithChildren } from 'react'
+import { urlFor } from '~/client'
 import Heading from '~/components/heading'
 import { Button } from '~/components/ui/button'
 import { Separator } from '~/components/ui/separator'
@@ -11,17 +11,17 @@ import type { NavItem } from '~/types/index'
 const sidebarNavItems: NavItem[] = [
   {
     title: 'Profile',
-    href: routes['profile.edit'].pattern,
+    href: urlFor('profile.edit'),
     icon: null,
   },
   {
     title: 'Security',
-    href: routes['security.edit'].pattern,
+    href: urlFor('security.edit'),
     icon: null,
   },
   {
     title: 'Appearance',
-    href: routes['appearence.edit'].pattern,
+    href: urlFor('appearence.edit'),
     icon: null,
   },
 ]

@@ -15,16 +15,17 @@ import {
 } from '~/components/ui/sidebar'
 import { NavItem } from '../types/index'
 import { routes } from '@generated/registry'
+import { urlFor } from '~/client'
 
 const mainNavItems: NavItem[] = [
   {
     title: 'Dashboard',
-    href: routes.dashboard.pattern,
+    href: urlFor('dashboard'),
     icon: LayoutGrid,
   },
   {
     title: 'Tags',
-    href: routes['tags.index'].pattern,
+    href: urlFor('tags.index'),
     icon: TagPlusIcon,
   },
 ]

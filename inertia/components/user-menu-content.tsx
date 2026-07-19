@@ -8,8 +8,8 @@ import {
 import { UserInfo } from '~/components/user-info'
 import { useMobileNavigation } from '~/hooks/use-mobile-navigation'
 import { User } from '../types/index'
-import { Link } from '@adonisjs/inertia/react'
-import { router } from '@inertiajs/react'
+import { Link, router } from '@inertiajs/react'
+import { urlFor } from '~/client'
 
 type Props = {
   user: User
@@ -34,7 +34,7 @@ export function UserMenuContent({ user }: Props) {
       <DropdownMenuGroup>
         <DropdownMenuItem asChild>
           <Link
-            route="profile.edit"
+            href={urlFor('profile.edit')}
             className="block w-full cursor-pointer"
             prefetch
             onClick={cleanup}
@@ -48,7 +48,7 @@ export function UserMenuContent({ user }: Props) {
       <DropdownMenuItem asChild>
         <Link
           className="block w-full cursor-pointer"
-          route="logout"
+          href={urlFor('profile.edit')}
           as="button"
           onClick={handleLogout}
           data-test="logout-button"

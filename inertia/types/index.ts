@@ -2,11 +2,6 @@ export type * from './auth'
 export type * from './navigation'
 export type * from './ui'
 
-// export type Tags = {
-//   id: number
-//   name: string
-// }
-
 interface Tags {
   id: number
   label: string

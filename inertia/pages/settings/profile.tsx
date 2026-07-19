@@ -2,6 +2,7 @@ import { Data } from '@generated/data'
 import { Form, Head, usePage } from '@inertiajs/react'
 import { Link } from '@inertiajs/react'
 import { ReactNode } from 'react'
+import { urlFor } from '~/client'
 import DeleteUser from '~/components/delete-user'
 import Heading from '~/components/heading'
 import InputError from '~/components/input-error'
@@ -118,7 +119,7 @@ Profile.layout = (page: ReactNode) => (
     breadcrumbs={[
       {
         title: 'Profile settings',
-        href: 'edit()',
+        href: urlFor('profile.edit'),
       },
     ]}
   >

@@ -17,7 +17,7 @@ import ProfileController from '#controllers/settings/profile_controller'
 import SecurityController from '#controllers/settings/security_controller'
 
 router.on('/').renderInertia('home', {}).as('home')
-router.get('dashboard', [DashboardController, 'index']).as('dashboard')
+router.get('dashboard', [DashboardController, 'index']).as('dashboard').use(middleware.auth())
 
 router.resource('tags', TagsController).except(['show'])
 
