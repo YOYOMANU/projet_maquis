@@ -6,7 +6,85 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* ---- Palette "Nocturne Gastronomique" ---- */
+  /* ---- Palette "Parchemin Gastronomique" (light) ---- */
+  --bg: #faf6ee;
+  --bg-alt: #f3ecdd;
+  --surface: #ffffff;
+  --surface-2: #fbf7ef;
+  --surface-hover: #f5eee0;
+  --line: rgba(154, 90, 44, 0.14);
+  --line-strong: rgba(154, 90, 44, 0.3);
+
+  --copper: #b5702f;
+  --copper-light: #d98a4f;
+  --copper-dark: #7a4620;
+  --wine: #9c3f3f;
+  --wine-light: #b95656;
+  --sage: #5f7d58;
+
+  --cream: #241708;
+  --parchment: #3a2c1a;
+  --text-dim: #5c4f3d;
+  --muted-dim: #8a7c66;
+
+  --serif: 'Fraunces', serif;
+  --sans: 'Manrope', sans-serif;
+
+  --shadow-soft: 0 20px 50px -24px rgba(120, 90, 50, 0.22);
+  --shadow-glow: 0 24px 60px -20px rgba(154, 90, 44, 0.22);
+
+  /* ---- Couleurs jusqu'ici codées en dur dans @layer components ---- */
+  --scrollbar-track: var(--bg);
+  --scrollbar-thumb: #e2d4b8;
+  --switcher-bg: #ffffff;
+  --switcher-border: #ece0cb;
+  --grain-opacity: 0.02;
+  --rbar-track-bg: #ecdfc8;
+  --mini-map-from: #dce8d6;
+  --mini-map-to: #eef2ea;
+  --overlay-rgb: 20, 14, 6;
+  --gold-text: #241206;
+  --hero-fade-from: rgba(250, 246, 238, 1);
+
+  /* ---- Tokens shadcn mappés sur la palette ---- */
+  --background: var(--bg);
+  --foreground: var(--cream);
+  --card: var(--surface);
+  --card-foreground: var(--cream);
+  --popover: var(--surface-2);
+  --popover-foreground: var(--cream);
+  --primary: var(--copper);
+  --primary-foreground: #fdf7ee;
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--cream);
+  --muted: var(--surface);
+  --muted-foreground: var(--muted-dim);
+  --accent: var(--surface-hover);
+  --accent-foreground: var(--copper-dark);
+  --destructive: var(--wine);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--copper);
+  --chart-1: var(--copper-light);
+  --chart-2: var(--copper);
+  --chart-3: var(--wine-light);
+  --chart-4: var(--wine);
+  --chart-5: var(--sage);
+  --radius: 0.5rem;
+
+  /* ---- Sidebar ---- */
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--cream);
+  --sidebar-primary: var(--copper);
+  --sidebar-primary-foreground: #fdf7ee;
+  --sidebar-accent: var(--surface-hover);
+  --sidebar-accent-foreground: var(--copper-dark);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--copper);
+}
+
+.dark {
+  /* ---- Palette "Nocturne Gastronomique" (dark) ---- */
   --bg: #0b0806;
   --bg-alt: #120d0a;
   --surface: #1b140f;
@@ -24,53 +102,24 @@
 
   --cream: #f6ecda;
   --parchment: #e6d8bd;
-  --text-dim: oklch(0.97 0 0);
+  --text-dim: #b9ab93;
   --muted-dim: #786b58;
-
-  --serif: 'Fraunces', serif;
-  --sans: 'Manrope', sans-serif;
 
   --shadow-soft: 0 20px 50px -24px rgba(0, 0, 0, 0.7);
   --shadow-glow: 0 24px 60px -20px rgba(154, 90, 44, 0.35);
 
-  /* ---- Tokens shadcn mappés sur la palette ---- */
-  --background: var(--bg);
-  --foreground: var(--cream);
-  --card: var(--surface);
-  --card-foreground: var(--cream);
-  --popover: var(--surface-2);
-  --popover-foreground: var(--cream);
-  --primary: var(--copper);
-  --primary-foreground: #241206;
-  --secondary: var(--surface-2);
-  --secondary-foreground: var(--cream);
-  --muted: var(--surface);
-  --muted-foreground: var(--muted-dim);
-  --accent: var(--surface-hover);
-  --accent-foreground: var(--copper-light);
-  --destructive: var(--wine);
-  --border: var(--line);
-  --input: var(--line);
-  --ring: var(--copper);
-  --chart-1: var(--copper-light);
-  --chart-2: var(--copper);
-  --chart-3: var(--wine-light);
-  --chart-4: var(--wine);
-  --chart-5: var(--sage);
-  --radius: 0.5rem;
+  --scrollbar-track: var(--bg);
+  --scrollbar-thumb: #2e2216;
+  --switcher-bg: #070504;
+  --switcher-border: #241a10;
+  --grain-opacity: 0.03;
+  --rbar-track-bg: #2a2016;
+  --mini-map-from: #1c2417;
+  --mini-map-to: #12160f;
+  --overlay-rgb: 11, 7, 5;
+  --gold-text: #241206;
+  --hero-fade-from: rgba(11, 8, 6, 1);
 
-  /* ---- Sidebar (aligné sur le starter kit officiel) ---- */
-  --sidebar: var(--surface);
-  --sidebar-foreground: var(--cream);
-  --sidebar-primary: var(--copper);
-  --sidebar-primary-foreground: #241206;
-  --sidebar-accent: var(--surface-hover);
-  --sidebar-accent-foreground: var(--copper-light);
-  --sidebar-border: var(--line);
-  --sidebar-ring: var(--copper);
-}
-
-.dark {
   --background: var(--bg);
   --foreground: var(--cream);
   --card: var(--surface);
@@ -108,7 +157,6 @@
   --font-heading: var(--serif);
   --font-sans: var(--sans);
 
-  /* expose la palette custom comme utilities Tailwind (bg-copper, text-wine, etc.) */
   --color-bg: var(--bg);
   --color-bg-alt: var(--bg-alt);
   --color-surface: var(--surface);
@@ -187,7 +235,7 @@
     @apply pointer-events-none fixed inset-0 z-[9999];
     background-image: radial-gradient(
       circle at 1px 1px,
-      rgba(255, 255, 255, 0.03) 1px,
+      rgba(120, 100, 70, var(--grain-opacity)) 1px,
       transparent 0
     );
     background-size: 3px 3px;
@@ -203,11 +251,11 @@
     @apply h-2.5 w-2.5;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-bg;
+    background: var(--scrollbar-track);
   }
   ::-webkit-scrollbar-thumb {
     @apply rounded-[10px];
-    background: #2e2216;
+    background: var(--scrollbar-thumb);
   }
 }
 
@@ -215,20 +263,21 @@
   /* ---------- SWITCHER (outil de démo) ---------- */
   .switcher {
     @apply fixed inset-x-0 top-0 z-[1000] flex items-center gap-1.5 overflow-x-auto px-4 py-[11px] font-sans;
-    background: #070504;
-    border-bottom: 1px solid #241a10;
+    background: var(--switcher-bg);
+    border-bottom: 1px solid var(--switcher-border);
   }
   .switcher-label {
     @apply mr-2.5 shrink-0 whitespace-nowrap text-[11px] font-bold tracking-[0.14em] text-muted-dim uppercase;
   }
   .switcher button {
-    @apply cursor-pointer rounded-full border border-[#251a10] px-[13px] py-1.5 font-sans text-[12.5px] font-semibold whitespace-nowrap text-text-dim transition-colors duration-200;
+    @apply cursor-pointer rounded-full border border-line px-[13px] py-1.5 font-sans text-[12.5px] font-semibold whitespace-nowrap text-text-dim transition-colors duration-200;
   }
   .switcher button:hover {
     @apply border-line-strong text-copper-light;
   }
   .switcher button.active {
-    @apply border-transparent font-extrabold text-[#241206];
+    @apply border-transparent font-extrabold;
+    color: var(--gold-text);
     background: linear-gradient(135deg, var(--copper-light), var(--copper));
   }
 
@@ -245,7 +294,7 @@
   /* ---------- HEADER (partagé) ---------- */
   .app-header {
     @apply sticky top-[3px] z-[100] flex items-center justify-between border-b border-line px-[52px] py-[22px] backdrop-blur-[14px];
-    background-color: rgba(11, 8, 6, 0.82);
+    background-color: color-mix(in oklab, var(--bg) 82%, transparent);
   }
   .logo {
     @apply flex items-center gap-2.5 font-serif text-[25px] font-semibold tracking-[0.01em] text-cream;
@@ -297,7 +346,8 @@
     @apply border-line-strong bg-surface;
   }
   .avatar {
-    @apply flex h-10 w-10 items-center justify-center rounded-full font-serif text-base font-semibold text-[#1e1108];
+    @apply flex h-10 w-10 items-center justify-center rounded-full font-serif text-base font-semibold;
+    color: var(--gold-text);
     background: linear-gradient(135deg, var(--wine), var(--copper));
     box-shadow: 0 0 0 2px rgba(217, 138, 79, 0.2);
   }
@@ -353,12 +403,12 @@
     background:
       linear-gradient(155deg, rgba(217, 138, 79, 0.16), transparent 45%),
       linear-gradient(340deg, rgba(156, 63, 63, 0.18), transparent 50%),
-      linear-gradient(135deg, #2a1d13, #160f0a 65%);
+      linear-gradient(135deg, var(--surface-2), var(--bg-alt) 65%);
   }
   .photo-ph::after {
     content: '';
     @apply absolute inset-0;
-    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.35);
+    box-shadow: inset 0 0 40px rgba(var(--overlay-rgb), 0.35);
   }
   .photo-ph .ph-label {
     @apply relative z-[2] p-4 text-[10.5px] font-bold tracking-[0.1em] text-muted-dim uppercase;
@@ -451,7 +501,7 @@
   }
   .mini-map {
     @apply relative h-[175px] overflow-hidden rounded-2xl border border-line;
-    background: linear-gradient(150deg, #1c2417, #12160f 70%);
+    background: linear-gradient(150deg, var(--mini-map-from), var(--mini-map-to) 70%);
   }
   .mini-map .pin {
     @apply absolute h-[9px] w-[9px] rotate-[-45deg] rounded-[50%_50%_50%_0] bg-copper;
@@ -466,12 +516,12 @@
     background:
       linear-gradient(155deg, rgba(217, 138, 79, 0.2), transparent 45%),
       linear-gradient(340deg, rgba(156, 63, 63, 0.22), transparent 50%),
-      linear-gradient(135deg, #2a1d13, #160f0a 65%);
+      linear-gradient(135deg, var(--surface-2), var(--bg-alt) 65%);
   }
   .hero-carousel::after {
     content: '';
     @apply absolute inset-0;
-    background: linear-gradient(0deg, rgba(11, 8, 6, 1) 0%, transparent 48%);
+    background: linear-gradient(0deg, var(--hero-fade-from) 0%, transparent 48%);
   }
   .hero-overlay {
     @apply absolute right-[52px] bottom-10 left-[52px] z-[2] flex items-end justify-between;
@@ -486,7 +536,8 @@
     @apply flex gap-1.5;
   }
   .carousel-dots span {
-    @apply h-1.5 w-1.5 rounded-full bg-white/28;
+    @apply h-1.5 w-1.5 rounded-full;
+    background: rgba(var(--overlay-rgb), 0.28);
   }
   .carousel-dots span.on {
     @apply w-[22px] rounded bg-copper;
@@ -509,7 +560,7 @@
   }
   .rbar-track {
     @apply h-[5px] flex-1 overflow-hidden rounded-[3px];
-    background: #2a2016;
+    background: var(--rbar-track-bg);
   }
   .rbar-fill {
     @apply h-full;
@@ -526,7 +577,8 @@
     @apply border-line-strong;
   }
   .pill.on {
-    @apply border-transparent font-extrabold text-[#241206];
+    @apply border-transparent font-extrabold;
+    color: var(--gold-text);
     background: linear-gradient(135deg, var(--copper-light), var(--copper));
   }
 
@@ -578,7 +630,8 @@
     @apply cursor-pointer border-none bg-transparent px-[17px] py-[9px] text-[12.5px] font-semibold text-text-dim;
   }
   .view-toggle button.on {
-    @apply font-extrabold text-[#241206];
+    @apply font-extrabold;
+    color: var(--gold-text);
     background: linear-gradient(135deg, var(--copper-light), var(--copper));
   }
   .results-grid {
@@ -621,7 +674,7 @@
   }
   .mosaic-overlay {
     @apply absolute inset-0 flex items-center justify-center font-serif text-[13.5px] font-bold text-copper-light italic opacity-0 transition-opacity duration-300;
-    background: rgba(11, 7, 5, 0.6);
+    background: rgba(var(--overlay-rgb), 0.6);
   }
   .list-card:hover .mosaic-overlay {
     @apply opacity-100;
@@ -656,7 +709,8 @@
     @apply flex items-center gap-6;
   }
   .avatar-lg {
-    @apply flex h-[88px] w-[88px] items-center justify-center rounded-full font-serif text-4xl font-semibold text-[#1e1108];
+    @apply flex h-[88px] w-[88px] items-center justify-center rounded-full font-serif text-4xl font-semibold;
+    color: var(--gold-text);
     background: linear-gradient(135deg, var(--wine), var(--copper));
     box-shadow: 0 0 0 3px rgba(217, 138, 79, 0.2);
   }
@@ -710,7 +764,7 @@
   }
   .rate-panel {
     @apply absolute inset-y-0 right-0 w-[480px] animate-[slideIn_0.45s_cubic-bezier(0.2,0.7,0.3,1)] overflow-y-auto border-l border-line-strong bg-surface px-9 py-[38px];
-    box-shadow: -50px 0 80px rgba(0, 0, 0, 0.55);
+    box-shadow: -50px 0 80px rgba(var(--overlay-rgb), 0.4);
   }
   .rate-panel h2 {
     @apply mb-[5px] font-serif text-[28px] font-medium italic;
@@ -735,13 +789,15 @@
     background: linear-gradient(135deg, var(--wine-light), var(--wine));
   }
   .rate-textarea {
-    @apply mb-[26px] h-[115px] w-full resize-none rounded-2xl border border-line bg-[var(--bg-alt)] p-4 font-sans text-[13.5px] text-cream;
+    @apply mb-[26px] h-[115px] w-full resize-none rounded-2xl border border-line p-4 font-sans text-[13.5px] text-cream;
+    background: var(--bg-alt);
   }
   .drop-zone {
     @apply mb-8 rounded-2xl border-[1.5px] border-dashed border-line-strong p-8 text-center text-[13px] text-text-dim;
   }
   .btn-gold {
-    @apply w-full cursor-pointer rounded-2xl border-none py-4 text-[14.5px] font-extrabold tracking-[0.02em] text-[#241206];
+    @apply w-full cursor-pointer rounded-2xl border-none py-4 text-[14.5px] font-extrabold tracking-[0.02em];
+    color: var(--gold-text);
     background: linear-gradient(135deg, var(--copper-light), var(--copper));
     box-shadow: 0 14px 30px -10px rgba(217, 138, 79, 0.4);
   }
