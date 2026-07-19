@@ -6,45 +6,45 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* ---- Palette "Parchemin Gastronomique" (light) ---- */
-  --bg: #faf6ee;
-  --bg-alt: #f3ecdd;
+  /* ---- Palette "Porcelaine Bleu Roi" (light) ---- */
+  --bg: #f7f9fc;
+  --bg-alt: #eef2f9;
   --surface: #ffffff;
-  --surface-2: #fbf7ef;
-  --surface-hover: #f5eee0;
-  --line: rgba(154, 90, 44, 0.14);
-  --line-strong: rgba(154, 90, 44, 0.3);
+  --surface-2: #f9fbfe;
+  --surface-hover: #eef3fa;
+  --line: rgba(37, 79, 158, 0.12);
+  --line-strong: rgba(37, 79, 158, 0.28);
 
-  --copper: #b5702f;
-  --copper-light: #d98a4f;
-  --copper-dark: #7a4620;
-  --wine: #9c3f3f;
-  --wine-light: #b95656;
-  --sage: #5f7d58;
+  --copper: #2f5fc4;
+  --copper-light: #4d7ede;
+  --copper-dark: #1e3f8a;
+  --wine: #b0475a;
+  --wine-light: #c96b7b;
+  --sage: #3f9488;
 
-  --cream: #241708;
-  --parchment: #3a2c1a;
-  --text-dim: #5c4f3d;
-  --muted-dim: #8a7c66;
+  --cream: #10192e;
+  --parchment: #1c2a45;
+  --text-dim: #4a5972;
+  --muted-dim: #8393ac;
 
   --serif: 'Fraunces', serif;
   --sans: 'Manrope', sans-serif;
 
-  --shadow-soft: 0 20px 50px -24px rgba(120, 90, 50, 0.22);
-  --shadow-glow: 0 24px 60px -20px rgba(154, 90, 44, 0.22);
+  --shadow-soft: 0 20px 50px -24px rgba(30, 63, 138, 0.18);
+  --shadow-glow: 0 24px 60px -20px rgba(47, 95, 196, 0.22);
 
   /* ---- Couleurs jusqu'ici codées en dur dans @layer components ---- */
   --scrollbar-track: var(--bg);
-  --scrollbar-thumb: #e2d4b8;
+  --scrollbar-thumb: #d7e0ef;
   --switcher-bg: #ffffff;
-  --switcher-border: #ece0cb;
-  --grain-opacity: 0.02;
-  --rbar-track-bg: #ecdfc8;
-  --mini-map-from: #dce8d6;
-  --mini-map-to: #eef2ea;
-  --overlay-rgb: 20, 14, 6;
-  --gold-text: #241206;
-  --hero-fade-from: rgba(250, 246, 238, 1);
+  --switcher-border: #e4eaf5;
+  --grain-opacity: 0.015;
+  --rbar-track-bg: #e3e9f5;
+  --mini-map-from: #dce6f7;
+  --mini-map-to: #eef2fa;
+  --overlay-rgb: 16, 25, 46;
+  --gold-text: #f8fafd;
+  --hero-fade-from: rgba(247, 249, 252, 1);
 
   /* ---- Tokens shadcn mappés sur la palette ---- */
   --background: var(--bg);
@@ -54,7 +54,7 @@
   --popover: var(--surface-2);
   --popover-foreground: var(--cream);
   --primary: var(--copper);
-  --primary-foreground: #fdf7ee;
+  --primary-foreground: #f8fafd;
   --secondary: var(--surface-2);
   --secondary-foreground: var(--cream);
   --muted: var(--surface);
@@ -76,7 +76,7 @@
   --sidebar: var(--surface);
   --sidebar-foreground: var(--cream);
   --sidebar-primary: var(--copper);
-  --sidebar-primary-foreground: #fdf7ee;
+  --sidebar-primary-foreground: #f8fafd;
   --sidebar-accent: var(--surface-hover);
   --sidebar-accent-foreground: var(--copper-dark);
   --sidebar-border: var(--line);
@@ -84,41 +84,41 @@
 }
 
 .dark {
-  /* ---- Palette "Nocturne Gastronomique" (dark) ---- */
-  --bg: #0b0806;
-  --bg-alt: #120d0a;
-  --surface: #1b140f;
-  --surface-2: #211811;
-  --surface-hover: #291e15;
-  --line: rgba(217, 138, 79, 0.14);
-  --line-strong: rgba(217, 138, 79, 0.34);
+  /* ---- Palette "Bleu Nuit Électrique" (dark) ---- */
+  --bg: #070b16;
+  --bg-alt: #0b1120;
+  --surface: #111a2e;
+  --surface-2: #152039;
+  --surface-hover: #1a2745;
+  --line: rgba(93, 149, 231, 0.16);
+  --line-strong: rgba(93, 149, 231, 0.36);
 
-  --copper: #d98a4f;
-  --copper-light: #f2b877;
-  --copper-dark: #9a5a2c;
-  --wine: #9c3f3f;
-  --wine-light: #d17272;
-  --sage: #8bab84;
+  --copper: #5d95e7;
+  --copper-light: #8bb4f0;
+  --copper-dark: #3a6cc4;
+  --wine: #c96b7b;
+  --wine-light: #e08d9c;
+  --sage: #6bc4b4;
 
-  --cream: #f6ecda;
-  --parchment: #e6d8bd;
-  --text-dim: #b9ab93;
-  --muted-dim: #786b58;
+  --cream: #eaf1fb;
+  --parchment: #cfdcf2;
+  --text-dim: #a9bcdc;
+  --muted-dim: #6b7ea3;
 
   --shadow-soft: 0 20px 50px -24px rgba(0, 0, 0, 0.7);
-  --shadow-glow: 0 24px 60px -20px rgba(154, 90, 44, 0.35);
+  --shadow-glow: 0 24px 60px -20px rgba(93, 149, 231, 0.32);
 
   --scrollbar-track: var(--bg);
-  --scrollbar-thumb: #2e2216;
-  --switcher-bg: #070504;
-  --switcher-border: #241a10;
+  --scrollbar-thumb: #1c2745;
+  --switcher-bg: #050810;
+  --switcher-border: #182036;
   --grain-opacity: 0.03;
-  --rbar-track-bg: #2a2016;
-  --mini-map-from: #1c2417;
-  --mini-map-to: #12160f;
-  --overlay-rgb: 11, 7, 5;
-  --gold-text: #241206;
-  --hero-fade-from: rgba(11, 8, 6, 1);
+  --rbar-track-bg: #1c2843;
+  --mini-map-from: #16233f;
+  --mini-map-to: #0d1526;
+  --overlay-rgb: 5, 8, 16;
+  --gold-text: #071022;
+  --hero-fade-from: rgba(7, 11, 22, 1);
 
   --background: var(--bg);
   --foreground: var(--cream);
@@ -127,7 +127,7 @@
   --popover: var(--surface-2);
   --popover-foreground: var(--cream);
   --primary: var(--copper);
-  --primary-foreground: #241206;
+  --primary-foreground: #071022;
   --secondary: var(--surface-2);
   --secondary-foreground: var(--cream);
   --muted: var(--surface);
@@ -146,7 +146,7 @@
   --sidebar: var(--surface);
   --sidebar-foreground: var(--cream);
   --sidebar-primary: var(--copper);
-  --sidebar-primary-foreground: #241206;
+  --sidebar-primary-foreground: #071022;
   --sidebar-accent: var(--surface-hover);
   --sidebar-accent-foreground: var(--copper-light);
   --sidebar-border: var(--line);
@@ -226,8 +226,8 @@
   body {
     @apply relative min-h-screen bg-background text-foreground;
     background:
-      radial-gradient(ellipse 1200px 700px at 15% -10%, rgba(217, 138, 79, 0.1), transparent 60%),
-      radial-gradient(ellipse 900px 600px at 100% 10%, rgba(156, 63, 63, 0.08), transparent 55%),
+      radial-gradient(ellipse 1200px 700px at 15% -10%, rgba(47, 95, 196, 0.08), transparent 60%),
+      radial-gradient(ellipse 900px 600px at 100% 10%, rgba(176, 71, 90, 0.05), transparent 55%),
       var(--bg);
   }
   body::before {
@@ -235,7 +235,7 @@
     @apply pointer-events-none fixed inset-0 z-[9999];
     background-image: radial-gradient(
       circle at 1px 1px,
-      rgba(120, 100, 70, var(--grain-opacity)) 1px,
+      rgba(70, 95, 140, var(--grain-opacity)) 1px,
       transparent 0
     );
     background-size: 3px 3px;
@@ -349,7 +349,7 @@
     @apply flex h-10 w-10 items-center justify-center rounded-full font-serif text-base font-semibold;
     color: var(--gold-text);
     background: linear-gradient(135deg, var(--wine), var(--copper));
-    box-shadow: 0 0 0 2px rgba(217, 138, 79, 0.2);
+    box-shadow: 0 0 0 2px rgba(47, 95, 196, 0.2);
   }
 
   /* ---------- Utility ---------- */
@@ -371,24 +371,24 @@
   }
   .tag.quartier {
     @apply text-copper-light;
-    border-color: rgba(217, 138, 79, 0.3);
-    background: rgba(217, 138, 79, 0.07);
+    border-color: rgba(47, 95, 196, 0.3);
+    background: rgba(47, 95, 196, 0.07);
   }
   .tag.quartier::before {
     @apply bg-copper;
   }
   .tag.prix {
     @apply text-sage;
-    border-color: rgba(139, 171, 132, 0.3);
-    background: rgba(139, 171, 132, 0.07);
+    border-color: rgba(63, 148, 136, 0.3);
+    background: rgba(63, 148, 136, 0.07);
   }
   .tag.prix::before {
     @apply bg-sage;
   }
   .tag.ambiance {
     @apply text-wine-light;
-    border-color: rgba(209, 114, 114, 0.32);
-    background: rgba(156, 63, 63, 0.09);
+    border-color: rgba(176, 71, 90, 0.28);
+    background: rgba(176, 71, 90, 0.08);
   }
   .tag.ambiance::before {
     @apply bg-wine-light;
@@ -401,8 +401,8 @@
   .photo-ph {
     @apply relative flex items-end overflow-hidden rounded-2xl;
     background:
-      linear-gradient(155deg, rgba(217, 138, 79, 0.16), transparent 45%),
-      linear-gradient(340deg, rgba(156, 63, 63, 0.18), transparent 50%),
+      linear-gradient(155deg, rgba(47, 95, 196, 0.14), transparent 45%),
+      linear-gradient(340deg, rgba(176, 71, 90, 0.12), transparent 50%),
       linear-gradient(135deg, var(--surface-2), var(--bg-alt) 65%);
   }
   .photo-ph::after {
@@ -422,10 +422,10 @@
     @apply pointer-events-none absolute inset-0 rounded-[22px] p-px;
     background: linear-gradient(
       160deg,
-      rgba(217, 138, 79, 0.25),
+      rgba(47, 95, 196, 0.22),
       transparent 30%,
       transparent 70%,
-      rgba(156, 63, 63, 0.18)
+      rgba(176, 71, 90, 0.14)
     );
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
@@ -505,7 +505,7 @@
   }
   .mini-map .pin {
     @apply absolute h-[9px] w-[9px] rotate-[-45deg] rounded-[50%_50%_50%_0] bg-copper;
-    box-shadow: 0 0 0 4px rgba(217, 138, 79, 0.18);
+    box-shadow: 0 0 0 4px rgba(47, 95, 196, 0.18);
   }
 
   /* ============================================================
@@ -514,8 +514,8 @@
   .hero-carousel {
     @apply relative h-[480px] overflow-hidden;
     background:
-      linear-gradient(155deg, rgba(217, 138, 79, 0.2), transparent 45%),
-      linear-gradient(340deg, rgba(156, 63, 63, 0.22), transparent 50%),
+      linear-gradient(155deg, rgba(47, 95, 196, 0.18), transparent 45%),
+      linear-gradient(340deg, rgba(176, 71, 90, 0.16), transparent 50%),
       linear-gradient(135deg, var(--surface-2), var(--bg-alt) 65%);
   }
   .hero-carousel::after {
@@ -701,8 +701,8 @@
   .profile-banner {
     @apply flex items-center justify-between border-b border-line bg-surface px-[52px] py-[60px];
     background:
-      radial-gradient(ellipse 700px 300px at 10% 0%, rgba(217, 138, 79, 0.12), transparent 65%),
-      radial-gradient(ellipse 500px 300px at 90% 100%, rgba(156, 63, 63, 0.1), transparent 60%),
+      radial-gradient(ellipse 700px 300px at 10% 0%, rgba(47, 95, 196, 0.1), transparent 65%),
+      radial-gradient(ellipse 500px 300px at 90% 100%, rgba(176, 71, 90, 0.07), transparent 60%),
       var(--surface);
   }
   .profile-id {
@@ -712,7 +712,7 @@
     @apply flex h-[88px] w-[88px] items-center justify-center rounded-full font-serif text-4xl font-semibold;
     color: var(--gold-text);
     background: linear-gradient(135deg, var(--wine), var(--copper));
-    box-shadow: 0 0 0 3px rgba(217, 138, 79, 0.2);
+    box-shadow: 0 0 0 3px rgba(47, 95, 196, 0.2);
   }
   .profile-name {
     @apply font-serif text-[32px] font-medium;
@@ -737,7 +737,7 @@
   }
   .badge {
     @apply flex items-center gap-[9px] rounded-full border border-line-strong px-[18px] py-[9px] text-[12.5px] font-semibold text-copper-light;
-    background: rgba(217, 138, 79, 0.06);
+    background: rgba(47, 95, 196, 0.06);
   }
   .profile-content {
     @apply mx-auto max-w-[1440px] px-[52px] pt-11 pb-[90px];
@@ -799,7 +799,7 @@
     @apply w-full cursor-pointer rounded-2xl border-none py-4 text-[14.5px] font-extrabold tracking-[0.02em];
     color: var(--gold-text);
     background: linear-gradient(135deg, var(--copper-light), var(--copper));
-    box-shadow: 0 14px 30px -10px rgba(217, 138, 79, 0.4);
+    box-shadow: 0 14px 30px -10px rgba(47, 95, 196, 0.4);
   }
 
   @keyframes fadeIn {
