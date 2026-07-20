@@ -33,7 +33,7 @@ export interface Registry {
   }
   'tags.index': {
     methods: ["GET","HEAD"]
-    pattern: '/tags'
+    pattern: '/dashboard/tags'
     types: {
       body: {}
       paramsTuple: []
@@ -45,7 +45,7 @@ export interface Registry {
   }
   'tags.create': {
     methods: ["GET","HEAD"]
-    pattern: '/tags/create'
+    pattern: '/dashboard/tags/create'
     types: {
       body: {}
       paramsTuple: []
@@ -57,7 +57,7 @@ export interface Registry {
   }
   'tags.store': {
     methods: ["POST"]
-    pattern: '/tags'
+    pattern: '/dashboard/tags'
     types: {
       body: {}
       paramsTuple: []
@@ -69,7 +69,7 @@ export interface Registry {
   }
   'tags.edit': {
     methods: ["GET","HEAD"]
-    pattern: '/tags/:id/edit'
+    pattern: '/dashboard/tags/:id/edit'
     types: {
       body: {}
       paramsTuple: [ParamValue]
@@ -81,7 +81,7 @@ export interface Registry {
   }
   'tags.update': {
     methods: ["PUT","PATCH"]
-    pattern: '/tags/:id'
+    pattern: '/dashboard/tags/:id'
     types: {
       body: {}
       paramsTuple: [ParamValue]
@@ -93,7 +93,7 @@ export interface Registry {
   }
   'tags.destroy': {
     methods: ["DELETE"]
-    pattern: '/tags/:id'
+    pattern: '/dashboard/tags/:id'
     types: {
       body: {}
       paramsTuple: [ParamValue]
@@ -103,9 +103,9 @@ export interface Registry {
       errorResponse: unknown
     }
   }
-  'quartier.index': {
+  'quartiers.index': {
     methods: ["GET","HEAD"]
-    pattern: '/quartier'
+    pattern: '/dashboard/quartiers'
     types: {
       body: {}
       paramsTuple: []
@@ -115,9 +115,9 @@ export interface Registry {
       errorResponse: unknown
     }
   }
-  'quartier.create': {
+  'quartiers.create': {
     methods: ["GET","HEAD"]
-    pattern: '/quartier/create'
+    pattern: '/dashboard/quartiers/create'
     types: {
       body: {}
       paramsTuple: []
@@ -127,9 +127,9 @@ export interface Registry {
       errorResponse: unknown
     }
   }
-  'quartier.store': {
+  'quartiers.store': {
     methods: ["POST"]
-    pattern: '/quartier'
+    pattern: '/dashboard/quartiers'
     types: {
       body: {}
       paramsTuple: []
@@ -139,9 +139,9 @@ export interface Registry {
       errorResponse: unknown
     }
   }
-  'quartier.edit': {
+  'quartiers.edit': {
     methods: ["GET","HEAD"]
-    pattern: '/quartier/:id/edit'
+    pattern: '/dashboard/quartiers/:id/edit'
     types: {
       body: {}
       paramsTuple: [ParamValue]
@@ -151,9 +151,9 @@ export interface Registry {
       errorResponse: unknown
     }
   }
-  'quartier.update': {
+  'quartiers.update': {
     methods: ["PUT","PATCH"]
-    pattern: '/quartier/:id'
+    pattern: '/dashboard/quartiers/:id'
     types: {
       body: {}
       paramsTuple: [ParamValue]
@@ -163,9 +163,81 @@ export interface Registry {
       errorResponse: unknown
     }
   }
-  'quartier.destroy': {
+  'quartiers.destroy': {
     methods: ["DELETE"]
-    pattern: '/quartier/:id'
+    pattern: '/dashboard/quartiers/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'places.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/dashboard/places'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'places.create': {
+    methods: ["GET","HEAD"]
+    pattern: '/dashboard/places/create'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'places.store': {
+    methods: ["POST"]
+    pattern: '/dashboard/places'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'places.edit': {
+    methods: ["GET","HEAD"]
+    pattern: '/dashboard/places/:id/edit'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'places.update': {
+    methods: ["PUT","PATCH"]
+    pattern: '/dashboard/places/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'places.destroy': {
+    methods: ["DELETE"]
+    pattern: '/dashboard/places/:id'
     types: {
       body: {}
       paramsTuple: [ParamValue]

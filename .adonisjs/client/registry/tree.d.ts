@@ -12,13 +12,21 @@ export interface ApiDefinition {
     update: typeof routes['tags.update']
     destroy: typeof routes['tags.destroy']
   }
-  quartier: {
-    index: typeof routes['quartier.index']
-    create: typeof routes['quartier.create']
-    store: typeof routes['quartier.store']
-    edit: typeof routes['quartier.edit']
-    update: typeof routes['quartier.update']
-    destroy: typeof routes['quartier.destroy']
+  quartiers: {
+    index: typeof routes['quartiers.index']
+    create: typeof routes['quartiers.create']
+    store: typeof routes['quartiers.store']
+    edit: typeof routes['quartiers.edit']
+    update: typeof routes['quartiers.update']
+    destroy: typeof routes['quartiers.destroy']
+  }
+  places: {
+    index: typeof routes['places.index']
+    create: typeof routes['places.create']
+    store: typeof routes['places.store']
+    edit: typeof routes['places.edit']
+    update: typeof routes['places.update']
+    destroy: typeof routes['places.destroy']
   }
   profile: {
     edit: typeof routes['profile.edit']

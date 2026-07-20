@@ -13,7 +13,7 @@ import { urlFor } from '~/client'
 const Breadcrumbs: BreadcrumbItem[] = [
   {
     title: 'Quartiers',
-    href: urlFor('quartier.index'),
+    href: urlFor('quartiers.index'),
   },
   {
     title: 'Editer',
@@ -28,7 +28,7 @@ type Props = InertiaProps<{
 function TagEditPage({ quartier }: Props) {
   return (
     <Form
-      route={quartier.id ? 'quartier.update' : 'quartier.store'}
+      route={quartier.id ? 'quartiers.update' : 'quartiers.store'}
       routeParams={{ id: quartier.id }}
     >
       {({ errors, processing }) => (

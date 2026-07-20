@@ -16,11 +16,18 @@ import TagsController from '#controllers/dashboard/tags_controller'
 import ProfileController from '#controllers/settings/profile_controller'
 import SecurityController from '#controllers/settings/security_controller'
 import QuartiersController from '#controllers/dashboard/quartiers_controller'
+import PlacesController from '#controllers/dashboard/places_controller'
 
 router.on('/').renderInertia('home', {}).as('home')
-router.get('dashboard', [DashboardController, 'index']).as('dashboard').use(middleware.auth())
-router.resource('tags', TagsController).except(['show'])
-router.resource('quartier', QuartiersController).except(['show'])
+router
+  .group(() => {
+    router.get('/', [DashboardController, 'index']).as('dashboard').use(middleware.auth())
+    router.resource('tags', TagsController).except(['show'])
+    router.resource('quartiers', QuartiersController).except(['show'])
+    router.resource('places', PlacesController).except(['show'])
+  })
+  .prefix('/dashboard')
+  .use(middleware.auth())
 
 router
   .group(() => {

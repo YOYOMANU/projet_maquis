@@ -12,12 +12,18 @@ export type ScannedRoutes = {
     'tags.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'tags.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'tags.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'quartier.index': { paramsTuple?: []; params?: {} }
-    'quartier.create': { paramsTuple?: []; params?: {} }
-    'quartier.store': { paramsTuple?: []; params?: {} }
-    'quartier.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'quartier.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'quartier.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'quartiers.index': { paramsTuple?: []; params?: {} }
+    'quartiers.create': { paramsTuple?: []; params?: {} }
+    'quartiers.store': { paramsTuple?: []; params?: {} }
+    'quartiers.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'quartiers.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'quartiers.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'places.index': { paramsTuple?: []; params?: {} }
+    'places.create': { paramsTuple?: []; params?: {} }
+    'places.store': { paramsTuple?: []; params?: {} }
+    'places.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'places.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'places.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'profile.edit': { paramsTuple?: []; params?: {} }
     'security.edit': { paramsTuple?: []; params?: {} }
     'appearence.edit': { paramsTuple?: []; params?: {} }
@@ -33,9 +39,12 @@ export type ScannedRoutes = {
     'tags.index': { paramsTuple?: []; params?: {} }
     'tags.create': { paramsTuple?: []; params?: {} }
     'tags.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'quartier.index': { paramsTuple?: []; params?: {} }
-    'quartier.create': { paramsTuple?: []; params?: {} }
-    'quartier.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'quartiers.index': { paramsTuple?: []; params?: {} }
+    'quartiers.create': { paramsTuple?: []; params?: {} }
+    'quartiers.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'places.index': { paramsTuple?: []; params?: {} }
+    'places.create': { paramsTuple?: []; params?: {} }
+    'places.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'profile.edit': { paramsTuple?: []; params?: {} }
     'security.edit': { paramsTuple?: []; params?: {} }
     'appearence.edit': { paramsTuple?: []; params?: {} }
@@ -48,9 +57,12 @@ export type ScannedRoutes = {
     'tags.index': { paramsTuple?: []; params?: {} }
     'tags.create': { paramsTuple?: []; params?: {} }
     'tags.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'quartier.index': { paramsTuple?: []; params?: {} }
-    'quartier.create': { paramsTuple?: []; params?: {} }
-    'quartier.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'quartiers.index': { paramsTuple?: []; params?: {} }
+    'quartiers.create': { paramsTuple?: []; params?: {} }
+    'quartiers.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'places.index': { paramsTuple?: []; params?: {} }
+    'places.create': { paramsTuple?: []; params?: {} }
+    'places.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'profile.edit': { paramsTuple?: []; params?: {} }
     'security.edit': { paramsTuple?: []; params?: {} }
     'appearence.edit': { paramsTuple?: []; params?: {} }
@@ -59,22 +71,26 @@ export type ScannedRoutes = {
   }
   POST: {
     'tags.store': { paramsTuple?: []; params?: {} }
-    'quartier.store': { paramsTuple?: []; params?: {} }
+    'quartiers.store': { paramsTuple?: []; params?: {} }
+    'places.store': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
     'logout': { paramsTuple?: []; params?: {} }
   }
   PUT: {
     'tags.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'quartier.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'quartiers.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'places.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   PATCH: {
     'tags.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'quartier.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'quartiers.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'places.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   DELETE: {
     'tags.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'quartier.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'quartiers.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'places.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
 }
 declare module '@adonisjs/core/types/http' {

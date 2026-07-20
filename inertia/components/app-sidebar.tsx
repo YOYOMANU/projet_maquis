@@ -1,5 +1,12 @@
 import { Link } from '@inertiajs/react'
-import { BookOpen, FolderGit2, HomeIcon, LayoutGrid, TagPlusIcon } from 'lucide-react'
+import {
+  BookOpen,
+  FolderGit2,
+  HamburgerIcon,
+  HomeIcon,
+  LayoutGrid,
+  TagPlusIcon,
+} from 'lucide-react'
 import AppLogo from '~/components/app-logo'
 import { NavFooter } from '~/components/nav-footer'
 import { NavMain } from '~/components/nav-main'
@@ -30,8 +37,13 @@ const mainNavItems: NavItem[] = [
   },
   {
     title: 'Quartier',
-    href: urlFor('quartier.index'),
+    href: urlFor('quartiers.index'),
     icon: HomeIcon,
+  },
+  {
+    title: 'Places',
+    href: urlFor('places.index'),
+    icon: HamburgerIcon,
   },
 ]
 

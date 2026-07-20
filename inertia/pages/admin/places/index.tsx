@@ -1,11 +1,12 @@
 import { Form, Link } from '@adonisjs/inertia/react'
 import { Data } from '@generated/data'
-import { router } from '@inertiajs/react'
 import { EditIcon, PlusIcon, TrashIcon } from 'lucide-react'
 import { urlFor } from '~/client'
 import AppPagination from '~/components/app-pagination'
 import { TopAction } from '~/components/top-action'
+import { AspectRatio } from '~/components/ui/aspect-ratio'
 import { Button } from '~/components/ui/button'
+import { ImageInput } from '~/components/ui/image-dropzone'
 import { Input } from '~/components/ui/input'
 
 import {
@@ -23,24 +24,20 @@ import { BreadcrumbItem } from '~/types/navigation'
 
 const breadCrumbs: BreadcrumbItem[] = [
   {
-    title: 'Quartiers',
-    href: urlFor('quartiers.index'),
+    title: 'Places',
+    href: urlFor('places.index'),
   },
 ]
 
 type Props = InertiaProps<{
-  quartier: {
-    data: Data.Quartier[]
+  places: {
+    data: Data.Place[]
     metadata: Meta
   }
 }>
 
-export default withAppLayout(breadCrumbs, ({ quartier }: Props) => {
-  const { data, metadata } = quartier
-
-  const goToPage = (page: number) => {
-    router.get('/quartiers', { page }, { preserveState: true, preserveScroll: true })
-  }
+export default withAppLayout(breadCrumbs, ({ places }: Props) => {
+  const { data, metadata } = places
   return (
     <>
       <TopAction>
@@ -53,6 +50,7 @@ export default withAppLayout(breadCrumbs, ({ quartier }: Props) => {
         <TableHeader>
           <TableRow>
             <TableHead>ID</TableHead>
+            <TableHead></TableHead>
             <TableHead>Nom</TableHead>
             <TableHead className="text-end">Actions</TableHead>
           </TableRow>
@@ -62,9 +60,9 @@ export default withAppLayout(breadCrumbs, ({ quartier }: Props) => {
           <TableRow>
             <TableCell colSpan={4}>
               <Button asChild variant="outline" className="w-full">
-                <Link href={urlFor('quartiers.create')}>
+                <Link href={urlFor('places.create')}>
                   <PlusIcon />
-                  Ajouter un quartier
+                  Ajouter une place
                 </Link>
               </Button>
             </TableCell>
@@ -73,24 +71,31 @@ export default withAppLayout(breadCrumbs, ({ quartier }: Props) => {
             <TableRow key={item.id}>
               <TableCell>{item.id}</TableCell>
               <TableCell>
-                <Link
-                  route="quartiers.edit"
-                  routeParams={{ id: item.id }}
-                  className="hover:underline"
-                >
+                {item.coverPhoto ? (
+                  <img
+                    src={`/uploads/${item.coverPhoto}`}
+                    alt=""
+                    className="rouded-lg aspect-square w-20 object-cover"
+                  />
+                ) : (
+                  <div className="aspect-square size-20 bg-background"></div>
+                )}
+              </TableCell>
+              <TableCell>
+                <Link route="places.edit" routeParams={{ id: item.id }} className="hover:underline">
                   {item.name}
                 </Link>
               </TableCell>
               <TableCell>
                 <div className="item-center flex justify-end gap-2">
                   <Button asChild size="icon" variant="outline">
-                    <Link route="quartiers.edit" routeParams={{ id: item.id }}>
+                    <Link route="places.edit" routeParams={{ id: item.id }}>
                       <EditIcon size={16} />
                     </Link>
                   </Button>
                   <Button asChild size="icon" variant="destructive">
                     <Link
-                      route="quartiers.destroy"
+                      route="places.destroy"
                       routeParams={{ id: item.id }}
                       onBefore={() => confirm('Voulez vous vraiment supprimer ce quartier ?')}
                     >
@@ -103,7 +108,7 @@ export default withAppLayout(breadCrumbs, ({ quartier }: Props) => {
           ))}
         </TableBody>
       </Table>
-      <AppPagination meta={metadata} route="quartiers.index" />
+      <AppPagination meta={metadata} route="places.index" />
     </>
   )
 })

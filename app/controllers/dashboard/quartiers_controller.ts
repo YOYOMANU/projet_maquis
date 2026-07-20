@@ -35,7 +35,7 @@ export default class QuartiersController {
     const data = await request.validateUsing(quartierCreateValidator)
     await Quartier.create(data)
     session.flash('success', 'Le quartier a bien été créer !')
-    return response.redirect().toRoute('quartier.index')
+    return response.redirect().toRoute('quartiers.index')
   }
 
   /**
@@ -61,7 +61,7 @@ export default class QuartiersController {
     const data = await request.validateUsing(quartierUpdateValidator)
     await quartier.merge(data).save()
     session.flash('success', 'Le quartier a bien été modifié !')
-    return response.redirect().toRoute('quartier.index')
+    return response.redirect().toRoute('quartiers.index')
   }
 
   /**
@@ -71,6 +71,6 @@ export default class QuartiersController {
     const quartier = await Quartier.findByOrFail('id', params.id)
     await quartier.delete()
     session.flash('success', 'Le quartier a bien été supprimé !')
-    return response.redirect().toRoute('quartier.index')
+    return response.redirect().toRoute('quartiers.index')
   }
 }
