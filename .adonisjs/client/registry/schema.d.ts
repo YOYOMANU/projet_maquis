@@ -103,6 +103,78 @@ export interface Registry {
       errorResponse: unknown
     }
   }
+  'quartier.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/quartier'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'quartier.create': {
+    methods: ["GET","HEAD"]
+    pattern: '/quartier/create'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'quartier.store': {
+    methods: ["POST"]
+    pattern: '/quartier'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'quartier.edit': {
+    methods: ["GET","HEAD"]
+    pattern: '/quartier/:id/edit'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'quartier.update': {
+    methods: ["PUT","PATCH"]
+    pattern: '/quartier/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'quartier.destroy': {
+    methods: ["DELETE"]
+    pattern: '/quartier/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
   'profile.edit': {
     methods: ["GET","HEAD"]
     pattern: '/settings/profile'

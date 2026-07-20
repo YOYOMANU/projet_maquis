@@ -12,6 +12,8 @@ type ExtractProps<T> =
 
 declare module '@adonisjs/inertia/types' {
   export interface InertiaPages {
+    'admin/quartier/form': ExtractProps<(typeof import('../../inertia/pages/admin/quartier/form.tsx'))['default']>
+    'admin/quartier/index': ExtractProps<(typeof import('../../inertia/pages/admin/quartier/index.tsx'))['default']>
     'admin/tag/form': ExtractProps<(typeof import('../../inertia/pages/admin/tag/form.tsx'))['default']>
     'admin/tag/index': ExtractProps<(typeof import('../../inertia/pages/admin/tag/index.tsx'))['default']>
     'auth/confirm-password': ExtractProps<(typeof import('../../inertia/pages/auth/confirm-password.tsx'))['default']>

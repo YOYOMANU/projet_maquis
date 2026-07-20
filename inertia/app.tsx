@@ -7,36 +7,9 @@ import { client } from './client'
 import { Toaster } from './components/ui/sonner'
 import { TooltipProvider } from './components/ui/tooltip'
 import { initializeTheme } from './hooks/use-appearance'
-import AppLayout from './layouts/app-layout'
-import AuthLayout from './layouts/auth-layout'
-import SettingsLayout from './layouts/settings/layout'
-import Layout from './layouts/default'
 
+import { resolveLayout } from '~/shared/resolve-layout'
 const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
-
-function resolveLayout(name: string) {
-  if (name.startsWith('auth/')) {
-    return (page: any) => <AuthLayout>{page}</AuthLayout>
-  }
-
-  if (name.startsWith('dashboard')) {
-    return (page: any) => <AppLayout>{page}</AppLayout>
-  }
-
-  if (name.startsWith('admin')) {
-    return (page: any) => <AppLayout>{page}</AppLayout>
-  }
-
-  if (name.startsWith('settings/')) {
-    return (page: any) => (
-      <AppLayout>
-        <SettingsLayout>{page}</SettingsLayout>
-      </AppLayout>
-    )
-  }
-
-  return (page: any) => <Layout>{page}</Layout>
-}
 
 createInertiaApp({
   title: (title) => (title ? `${title} - ${appName}` : appName),

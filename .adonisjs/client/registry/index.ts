@@ -54,6 +54,42 @@ const routes = {
     tokens: [{"old":"/tags/:id","type":0,"val":"tags","end":""},{"old":"/tags/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['tags.destroy']['types'],
   },
+  'quartier.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/quartier',
+    tokens: [{"old":"/quartier","type":0,"val":"quartier","end":""}],
+    types: placeholder as Registry['quartier.index']['types'],
+  },
+  'quartier.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/quartier/create',
+    tokens: [{"old":"/quartier/create","type":0,"val":"quartier","end":""},{"old":"/quartier/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['quartier.create']['types'],
+  },
+  'quartier.store': {
+    methods: ["POST"],
+    pattern: '/quartier',
+    tokens: [{"old":"/quartier","type":0,"val":"quartier","end":""}],
+    types: placeholder as Registry['quartier.store']['types'],
+  },
+  'quartier.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/quartier/:id/edit',
+    tokens: [{"old":"/quartier/:id/edit","type":0,"val":"quartier","end":""},{"old":"/quartier/:id/edit","type":1,"val":"id","end":""},{"old":"/quartier/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['quartier.edit']['types'],
+  },
+  'quartier.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/quartier/:id',
+    tokens: [{"old":"/quartier/:id","type":0,"val":"quartier","end":""},{"old":"/quartier/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['quartier.update']['types'],
+  },
+  'quartier.destroy': {
+    methods: ["DELETE"],
+    pattern: '/quartier/:id',
+    tokens: [{"old":"/quartier/:id","type":0,"val":"quartier","end":""},{"old":"/quartier/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['quartier.destroy']['types'],
+  },
   'profile.edit': {
     methods: ["GET","HEAD"],
     pattern: '/settings/profile',

@@ -1,11 +1,10 @@
-import { Form } from '@adonisjs/inertia/react'
+import { Form, Link } from '@adonisjs/inertia/react'
 import { Data } from '@generated/data'
-import { Link } from '@inertiajs/react'
+import { router } from '@inertiajs/react'
 import { EditIcon, PlusIcon, TrashIcon } from 'lucide-react'
 import { urlFor } from '~/client'
 import AppPagination from '~/components/app-pagination'
 import { TopAction } from '~/components/top-action'
-import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
 
@@ -24,20 +23,24 @@ import { BreadcrumbItem } from '~/types/navigation'
 
 const breadCrumbs: BreadcrumbItem[] = [
   {
-    title: 'Tags',
-    href: urlFor('tags.index'),
+    title: 'Quartiers',
+    href: urlFor('quartier.index'),
   },
 ]
 
 type Props = InertiaProps<{
-  tags: {
-    data: Data.Tag[]
+  quartier: {
+    data: Data.Quartier[]
     metadata: Meta
   }
 }>
 
-export default withAppLayout(breadCrumbs, ({ tags }: Props) => {
-  const { data, metadata } = tags
+export default withAppLayout(breadCrumbs, ({ quartier }: Props) => {
+  const { data, metadata } = quartier
+
+  const goToPage = (page: number) => {
+    router.get('/quartier', { page }, { preserveState: true, preserveScroll: true })
+  }
   return (
     <>
       <TopAction>
@@ -51,7 +54,6 @@ export default withAppLayout(breadCrumbs, ({ tags }: Props) => {
           <TableRow>
             <TableHead>ID</TableHead>
             <TableHead>Nom</TableHead>
-            <TableHead>Type</TableHead>
             <TableHead className="text-end">Actions</TableHead>
           </TableRow>
         </TableHeader>
@@ -60,9 +62,9 @@ export default withAppLayout(breadCrumbs, ({ tags }: Props) => {
           <TableRow>
             <TableCell colSpan={4}>
               <Button asChild variant="outline" className="w-full">
-                <Link href={urlFor('tags.create')}>
+                <Link href={urlFor('quartier.create')}>
                   <PlusIcon />
-                  Ajouter un tag
+                  Ajouter un quartier
                 </Link>
               </Button>
             </TableCell>
@@ -71,26 +73,26 @@ export default withAppLayout(breadCrumbs, ({ tags }: Props) => {
             <TableRow key={item.id}>
               <TableCell>{item.id}</TableCell>
               <TableCell>
-                <Link href={urlFor('tags.edit', { id: item.id })} className="hover:underline">
-                  {item.label}
+                <Link
+                  route="quartier.edit"
+                  routeParams={{ id: item.id }}
+                  className="hover:underline"
+                >
+                  {item.name}
                 </Link>
-              </TableCell>
-              <TableCell>
-                <Badge variant={item.type === 'place_type' ? 'default' : 'destructive'}>
-                  {item.type}
-                </Badge>
               </TableCell>
               <TableCell>
                 <div className="item-center flex justify-end gap-2">
                   <Button asChild size="icon" variant="outline">
-                    <Link href={urlFor('tags.edit', { id: item.id })}>
+                    <Link route="quartier.edit" routeParams={{ id: item.id }}>
                       <EditIcon size={16} />
                     </Link>
                   </Button>
                   <Button asChild size="icon" variant="destructive">
                     <Link
-                      href={urlFor('tags.destroy', { id: item.id })}
-                      onBefore={() => confirm('Voulez vous vraiment supprimer ce tag ?')}
+                      route="quartier.destroy"
+                      routeParams={{ id: item.id }}
+                      onBefore={() => confirm('Voulez vous vraiment supprimer ce quartier ?')}
                     >
                       <TrashIcon size={16} />
                     </Link>
@@ -101,7 +103,7 @@ export default withAppLayout(breadCrumbs, ({ tags }: Props) => {
           ))}
         </TableBody>
       </Table>
-      <AppPagination meta={metadata} route="tags.index" />
+      <AppPagination meta={metadata} route="quartier.index" />
     </>
   )
 })

@@ -7,9 +7,13 @@ export default class TagsController {
   /**
    * Display a list of resource
    */
-  async index({ inertia }: HttpContext) {
-    const tags = await Tag.all()
-    return inertia.render('admin/tag/index', { tags: TagTransformer.transform(tags) })
+  async index({ inertia, request }: HttpContext) {
+    const page = request.input('page', 1)
+    const limit = 5
+    const tags = await Tag.query().paginate(page, limit)
+    return inertia.render('admin/tag/index', {
+      tags: TagTransformer.paginate(tags.all(), tags.getMeta()),
+    })
   }
 
   /**
@@ -58,8 +62,8 @@ export default class TagsController {
    * Delete record
    */
   async destroy({ params, session, response }: HttpContext) {
-    const tag = await Tag.findBy('id', params.id)
-    tag?.delete()
+    const tag = await Tag.findByOrFail('id', params.id)
+    await tag.delete()
     session.flash('success', 'Tag supprimé')
     return response.redirect().toRoute('tags.index')
   }

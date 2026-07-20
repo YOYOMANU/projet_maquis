@@ -15,11 +15,12 @@ import NewAccountController from '#controllers/new_account_controller'
 import TagsController from '#controllers/dashboard/tags_controller'
 import ProfileController from '#controllers/settings/profile_controller'
 import SecurityController from '#controllers/settings/security_controller'
+import QuartiersController from '#controllers/dashboard/quartiers_controller'
 
 router.on('/').renderInertia('home', {}).as('home')
 router.get('dashboard', [DashboardController, 'index']).as('dashboard').use(middleware.auth())
-
 router.resource('tags', TagsController).except(['show'])
+router.resource('quartier', QuartiersController).except(['show'])
 
 router
   .group(() => {

@@ -6,6 +6,7 @@
 export const controllers = {
   dashboard: {
     Dashboard: () => import('#controllers/dashboard/dashboard_controller'),
+    Quartiers: () => import('#controllers/dashboard/quartiers_controller'),
     Tags: () => import('#controllers/dashboard/tags_controller'),
   },
   NewAccount: () => import('#controllers/new_account_controller'),

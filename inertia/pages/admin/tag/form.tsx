@@ -42,7 +42,7 @@ function TagEditPage({ tag }: Props) {
     <Form route={tag.id ? 'tags.update' : 'tags.store'} routeParams={{ id: tag.id }}>
       {({ errors, processing }) => (
         <>
-          <FormField htmlFor="label" label="label" error={errors.name}>
+          <FormField htmlFor="label" label="label" error={errors.label}>
             <Input id="label" name="label" defaultValue={tag.label} aria-invalid={!!errors.label} />
           </FormField>
 
