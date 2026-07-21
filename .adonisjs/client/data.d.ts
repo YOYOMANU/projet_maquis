@@ -10,6 +10,7 @@ import type PlaceTransformer from '#transformers/place_transformer'
 import type QuartierTransformer from '#transformers/quartier_transformer'
 import type TagTransformer from '#transformers/tag_transformer'
 import type UserTransformer from '#transformers/user_transformer'
+import type ReviewTransformer from '#transformers/review_transformer'
 import type InertiaMiddleware from '#middleware/inertia_middleware'
 
 export namespace Data {
@@ -28,6 +29,10 @@ export namespace Data {
   export type User = InferData<UserTransformer>
   export namespace User {
     export type Variants = InferVariants<UserTransformer>
+  }
+  export type Review = InferData<ReviewTransformer>
+  export namespace Review {
+    export type Variants = InferVariants<ReviewTransformer>
   }
   export type SharedProps = InferSharedProps<InertiaMiddleware>
 }

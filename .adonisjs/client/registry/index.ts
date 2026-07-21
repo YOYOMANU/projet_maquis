@@ -6,6 +6,12 @@ import type { ApiDefinition } from './tree.d.ts'
 const placeholder: any = {}
 
 const routes = {
+  'drive.fs.serve': {
+    methods: ["GET","HEAD"],
+    pattern: '/uploads/*',
+    tokens: [{"old":"/uploads/*","type":0,"val":"uploads","end":""},{"old":"/uploads/*","type":2,"val":"*","end":""}],
+    types: placeholder as Registry['drive.fs.serve']['types'],
+  },
   'home': {
     methods: ["GET","HEAD"],
     pattern: '/',
@@ -125,6 +131,42 @@ const routes = {
     pattern: '/dashboard/places/:id',
     tokens: [{"old":"/dashboard/places/:id","type":0,"val":"dashboard","end":""},{"old":"/dashboard/places/:id","type":0,"val":"places","end":""},{"old":"/dashboard/places/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['places.destroy']['types'],
+  },
+  'reviews.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/dashboard/reviews',
+    tokens: [{"old":"/dashboard/reviews","type":0,"val":"dashboard","end":""},{"old":"/dashboard/reviews","type":0,"val":"reviews","end":""}],
+    types: placeholder as Registry['reviews.index']['types'],
+  },
+  'reviews.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/dashboard/reviews/create',
+    tokens: [{"old":"/dashboard/reviews/create","type":0,"val":"dashboard","end":""},{"old":"/dashboard/reviews/create","type":0,"val":"reviews","end":""},{"old":"/dashboard/reviews/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['reviews.create']['types'],
+  },
+  'reviews.store': {
+    methods: ["POST"],
+    pattern: '/dashboard/reviews',
+    tokens: [{"old":"/dashboard/reviews","type":0,"val":"dashboard","end":""},{"old":"/dashboard/reviews","type":0,"val":"reviews","end":""}],
+    types: placeholder as Registry['reviews.store']['types'],
+  },
+  'reviews.edit': {
+    methods: ["GET","HEAD"],
+    pattern: '/dashboard/reviews/:id/edit',
+    tokens: [{"old":"/dashboard/reviews/:id/edit","type":0,"val":"dashboard","end":""},{"old":"/dashboard/reviews/:id/edit","type":0,"val":"reviews","end":""},{"old":"/dashboard/reviews/:id/edit","type":1,"val":"id","end":""},{"old":"/dashboard/reviews/:id/edit","type":0,"val":"edit","end":""}],
+    types: placeholder as Registry['reviews.edit']['types'],
+  },
+  'reviews.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/dashboard/reviews/:id',
+    tokens: [{"old":"/dashboard/reviews/:id","type":0,"val":"dashboard","end":""},{"old":"/dashboard/reviews/:id","type":0,"val":"reviews","end":""},{"old":"/dashboard/reviews/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['reviews.update']['types'],
+  },
+  'reviews.destroy': {
+    methods: ["DELETE"],
+    pattern: '/dashboard/reviews/:id',
+    tokens: [{"old":"/dashboard/reviews/:id","type":0,"val":"dashboard","end":""},{"old":"/dashboard/reviews/:id","type":0,"val":"reviews","end":""},{"old":"/dashboard/reviews/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['reviews.destroy']['types'],
   },
   'profile.edit': {
     methods: ["GET","HEAD"],

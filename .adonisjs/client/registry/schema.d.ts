@@ -7,6 +7,18 @@ import type { InferInput, SimpleError } from '@vinejs/vine/types'
 export type ParamValue = string | number | bigint | boolean
 
 export interface Registry {
+  'drive.fs.serve': {
+    methods: ["GET","HEAD"]
+    pattern: '/uploads/*'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { '*': ParamValue[] }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
   'home': {
     methods: ["GET","HEAD"]
     pattern: '/'
@@ -238,6 +250,78 @@ export interface Registry {
   'places.destroy': {
     methods: ["DELETE"]
     pattern: '/dashboard/places/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'reviews.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/dashboard/reviews'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'reviews.create': {
+    methods: ["GET","HEAD"]
+    pattern: '/dashboard/reviews/create'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'reviews.store': {
+    methods: ["POST"]
+    pattern: '/dashboard/reviews'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'reviews.edit': {
+    methods: ["GET","HEAD"]
+    pattern: '/dashboard/reviews/:id/edit'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'reviews.update': {
+    methods: ["PUT","PATCH"]
+    pattern: '/dashboard/reviews/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'reviews.destroy': {
+    methods: ["DELETE"]
+    pattern: '/dashboard/reviews/:id'
     types: {
       body: {}
       paramsTuple: [ParamValue]

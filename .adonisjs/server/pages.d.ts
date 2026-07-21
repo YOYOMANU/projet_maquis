@@ -33,5 +33,7 @@ declare module '@adonisjs/inertia/types' {
     'settings/appearance': ExtractProps<(typeof import('../../inertia/pages/settings/appearance.tsx'))['default']>
     'settings/profile': ExtractProps<(typeof import('../../inertia/pages/settings/profile.tsx'))['default']>
     'settings/security': ExtractProps<(typeof import('../../inertia/pages/settings/security.tsx'))['default']>
+    'admin/review/form': ExtractProps<(typeof import('../../inertia/pages/admin/review/form.tsx'))['default']>
+    'admin/review/index': ExtractProps<(typeof import('../../inertia/pages/admin/review/index.tsx'))['default']>
   }
 }

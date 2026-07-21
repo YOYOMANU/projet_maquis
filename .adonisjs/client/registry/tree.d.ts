@@ -2,6 +2,11 @@
 import type { routes } from './index.ts'
 
 export interface ApiDefinition {
+  drive: {
+    fs: {
+      serve: typeof routes['drive.fs.serve']
+    }
+  }
   home: typeof routes['home']
   dashboard: typeof routes['dashboard']
   tags: {
@@ -27,6 +32,14 @@ export interface ApiDefinition {
     edit: typeof routes['places.edit']
     update: typeof routes['places.update']
     destroy: typeof routes['places.destroy']
+  }
+  reviews: {
+    index: typeof routes['reviews.index']
+    create: typeof routes['reviews.create']
+    store: typeof routes['reviews.store']
+    edit: typeof routes['reviews.edit']
+    update: typeof routes['reviews.update']
+    destroy: typeof routes['reviews.destroy']
   }
   profile: {
     edit: typeof routes['profile.edit']

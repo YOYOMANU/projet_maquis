@@ -17,6 +17,7 @@ import ProfileController from '#controllers/settings/profile_controller'
 import SecurityController from '#controllers/settings/security_controller'
 import QuartiersController from '#controllers/dashboard/quartiers_controller'
 import PlacesController from '#controllers/dashboard/places_controller'
+import ReviewsController from '#controllers/dashboard/reviews_controller'
 
 router.on('/').renderInertia('home', {}).as('home')
 router
@@ -25,6 +26,7 @@ router
     router.resource('tags', TagsController).except(['show'])
     router.resource('quartiers', QuartiersController).except(['show'])
     router.resource('places', PlacesController).except(['show'])
+    router.resource('reviews', ReviewsController).except(['show'])
   })
   .prefix('/dashboard')
   .use(middleware.auth())

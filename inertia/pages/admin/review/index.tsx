@@ -22,20 +22,20 @@ import { BreadcrumbItem } from '~/types/navigation'
 
 const breadCrumbs: BreadcrumbItem[] = [
   {
-    title: 'Places',
-    href: urlFor('places.index'),
+    title: 'Reviews',
+    href: urlFor('reviews.index'),
   },
 ]
 
 type Props = InertiaProps<{
-  places: {
-    data: Data.Place[]
+  reviews: {
+    data: Data.Review[]
     metadata: Meta
   }
 }>
 
-export default withAppLayout(breadCrumbs, ({ places }: Props) => {
-  const { data, metadata } = places
+export default withAppLayout(breadCrumbs, ({ reviews }: Props) => {
+  const { data, metadata } = reviews
   return (
     <>
       <TopAction>
@@ -48,17 +48,18 @@ export default withAppLayout(breadCrumbs, ({ places }: Props) => {
         <TableHeader>
           <TableRow>
             <TableHead>ID</TableHead>
-            <TableHead></TableHead>
             <TableHead>Nom</TableHead>
+            <TableHead>Commentaire</TableHead>
+            <TableHead>Utilisateur</TableHead>
             <TableHead className="text-end">Actions</TableHead>
           </TableRow>
         </TableHeader>
 
         <TableBody>
           <TableRow>
-            <TableCell colSpan={4}>
+            <TableCell colSpan={5}>
               <Button asChild variant="outline" className="w-full">
-                <Link href={urlFor('places.create')}>
+                <Link href={urlFor('reviews.create')}>
                   <PlusIcon />
                   Ajouter une place
                 </Link>
@@ -69,31 +70,26 @@ export default withAppLayout(breadCrumbs, ({ places }: Props) => {
             <TableRow key={item.id}>
               <TableCell>{item.id}</TableCell>
               <TableCell>
-                {item.coverPhoto ? (
-                  <img
-                    src={`/uploads/${item.coverPhoto}`}
-                    alt=""
-                    className="rouded-lg aspect-square w-20 object-cover"
-                  />
-                ) : (
-                  <div className="aspect-square size-20 bg-background"></div>
-                )}
-              </TableCell>
-              <TableCell>
-                <Link route="places.edit" routeParams={{ id: item.id }} className="hover:underline">
-                  {item.name}
+                <Link
+                  route="reviews.edit"
+                  routeParams={{ id: item.id }}
+                  className="hover:underline"
+                >
+                  {item.dishName}
                 </Link>
               </TableCell>
+              <TableCell>{item.comment}</TableCell>
+              <TableCell>{item.user?.fullName}</TableCell>
               <TableCell>
                 <div className="item-center flex justify-end gap-2">
                   <Button asChild size="icon" variant="outline">
-                    <Link route="places.edit" routeParams={{ id: item.id }}>
+                    <Link route="reviews.edit" routeParams={{ id: item.id }}>
                       <EditIcon size={16} />
                     </Link>
                   </Button>
                   <Button asChild size="icon" variant="destructive">
                     <Link
-                      route="places.destroy"
+                      route="reviews.destroy"
                       routeParams={{ id: item.id }}
                       onBefore={() => confirm('Voulez vous vraiment supprimer ce quartier ?')}
                     >
@@ -106,7 +102,7 @@ export default withAppLayout(breadCrumbs, ({ places }: Props) => {
           ))}
         </TableBody>
       </Table>
-      <AppPagination meta={metadata} route="places.index" />
+      <AppPagination meta={metadata} route="reviews.index" />
     </>
   )
 })

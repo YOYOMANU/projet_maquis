@@ -5,8 +5,7 @@ import QuartierTransformer from '#transformers/quartier_transformer'
 import { placeValidator } from '#validators/place'
 import stringHelpers from '@adonisjs/core/helpers/string'
 import type { HttpContext } from '@adonisjs/core/http'
-import app from '@adonisjs/core/services/app'
-import { unlink } from 'node:fs/promises'
+import drive from '@adonisjs/drive/services/main'
 
 export default class PlacesController {
   /**
@@ -39,45 +38,27 @@ export default class PlacesController {
   /**
    * Handle form submission for the create action
    */
-  async store({ request, response, session }: HttpContext) {
-    const { cover_photo: coverPhoto, ...data } = await request.validateUsing(placeValidator)
-    const place = await Place.create(data)
-    if (coverPhoto) {
-      const newName = stringHelpers.generateRandom(32) + '.' + coverPhoto.extname
-      await coverPhoto.move(app.publicPath('uploads'), { name: newName, overwrite: true })
-      place.coverPhoto = newName
-      await place.save()
-    }
-
+  async store({ request, response, session, params }: HttpContext) {
+    this.handleRequest(params, request)
     session.flash('success', 'place créée avec succès !')
     return response.redirect().toRoute('places.index')
   }
 
   private async handleRequest(params: HttpContext['params'], request: HttpContext['request']) {
-    const place = await Place.findByOrFail('id', params.id)
-    const coverPhoto = request.file('cover_photo')
+    const place = params.id ? await Place.findByOrFail('id', params.id) : new Place()
+    const { cover_photo: coverPhoto, ...data } = await request.validateUsing(placeValidator)
+    await place.merge(data).save()
     if (coverPhoto) {
+      if (place.coverPhoto) {
+        await drive.use().delete(place.coverPhoto)
+      }
       const newName = stringHelpers.generateRandom(32) + '.' + coverPhoto.extname
-      await coverPhoto.move(app.publicPath('uploads'), { name: newName, overwrite: true })
-      place.coverPhoto = newName
+      const key = `uploads/${newName}`
+      await coverPhoto.moveToDisk(key)
+      place.coverPhoto = key
+      await place.save()
     }
-
-    const data = await request.validateUsing(placeValidator)
-    await place
-      .merge({
-        ...data,
-        slug: stringHelpers.slug(data.name),
-        reviewCount: 0,
-        avgRating: 0.0,
-        weightedScore: 0.0,
-      })
-      .save()
   }
-
-  /**
-   * Show individual record
-   */
-  async show({ params }: HttpContext) {}
 
   /**
    * Edit individual record
@@ -96,20 +77,7 @@ export default class PlacesController {
    * Handle form submission for the edit action
    */
   async update({ params, request, session, response }: HttpContext) {
-    const place = await Place.findByOrFail('id', params.id)
-    const { cover_photo: coverPhoto, ...data } = await request.validateUsing(placeValidator)
-
-    await place.merge(data).save()
-    if (coverPhoto) {
-      if (place.coverPhoto) {
-        const oldPath = app.publicPath('uploads', place.coverPhoto)
-        await unlink(oldPath).catch(() => {})
-      }
-      const newName = stringHelpers.generateRandom(32) + '.' + coverPhoto.extname
-      await coverPhoto.move(app.publicPath('uploads'), { name: newName, overwrite: true })
-      place.coverPhoto = newName
-      await place.save()
-    }
+    this.handleRequest(params, request)
     session.flash('success', 'place modifiée avec succès !')
     return response.redirect().toRoute('places.index')
   }

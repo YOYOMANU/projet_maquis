@@ -1,6 +1,7 @@
 import { Link } from '@inertiajs/react'
 import {
   BookOpen,
+  EyeIcon,
   FolderGit2,
   HamburgerIcon,
   HomeIcon,
@@ -44,6 +45,11 @@ const mainNavItems: NavItem[] = [
     title: 'Places',
     href: urlFor('places.index'),
     icon: HamburgerIcon,
+  },
+  {
+    title: 'Reviews',
+    href: urlFor('reviews.index'),
+    icon: EyeIcon,
   },
 ]
 

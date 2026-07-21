@@ -4,6 +4,7 @@ type ParamValue = string | number | bigint | boolean
 
 export type ScannedRoutes = {
   ALL: {
+    'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
     'home': { paramsTuple?: []; params?: {} }
     'dashboard': { paramsTuple?: []; params?: {} }
     'tags.index': { paramsTuple?: []; params?: {} }
@@ -24,6 +25,12 @@ export type ScannedRoutes = {
     'places.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'places.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'places.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'reviews.index': { paramsTuple?: []; params?: {} }
+    'reviews.create': { paramsTuple?: []; params?: {} }
+    'reviews.store': { paramsTuple?: []; params?: {} }
+    'reviews.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'reviews.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'reviews.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'profile.edit': { paramsTuple?: []; params?: {} }
     'security.edit': { paramsTuple?: []; params?: {} }
     'appearence.edit': { paramsTuple?: []; params?: {} }
@@ -34,6 +41,7 @@ export type ScannedRoutes = {
     'logout': { paramsTuple?: []; params?: {} }
   }
   GET: {
+    'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
     'home': { paramsTuple?: []; params?: {} }
     'dashboard': { paramsTuple?: []; params?: {} }
     'tags.index': { paramsTuple?: []; params?: {} }
@@ -45,6 +53,9 @@ export type ScannedRoutes = {
     'places.index': { paramsTuple?: []; params?: {} }
     'places.create': { paramsTuple?: []; params?: {} }
     'places.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'reviews.index': { paramsTuple?: []; params?: {} }
+    'reviews.create': { paramsTuple?: []; params?: {} }
+    'reviews.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'profile.edit': { paramsTuple?: []; params?: {} }
     'security.edit': { paramsTuple?: []; params?: {} }
     'appearence.edit': { paramsTuple?: []; params?: {} }
@@ -52,6 +63,7 @@ export type ScannedRoutes = {
     'login': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
+    'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
     'home': { paramsTuple?: []; params?: {} }
     'dashboard': { paramsTuple?: []; params?: {} }
     'tags.index': { paramsTuple?: []; params?: {} }
@@ -63,6 +75,9 @@ export type ScannedRoutes = {
     'places.index': { paramsTuple?: []; params?: {} }
     'places.create': { paramsTuple?: []; params?: {} }
     'places.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'reviews.index': { paramsTuple?: []; params?: {} }
+    'reviews.create': { paramsTuple?: []; params?: {} }
+    'reviews.edit': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'profile.edit': { paramsTuple?: []; params?: {} }
     'security.edit': { paramsTuple?: []; params?: {} }
     'appearence.edit': { paramsTuple?: []; params?: {} }
@@ -73,6 +88,7 @@ export type ScannedRoutes = {
     'tags.store': { paramsTuple?: []; params?: {} }
     'quartiers.store': { paramsTuple?: []; params?: {} }
     'places.store': { paramsTuple?: []; params?: {} }
+    'reviews.store': { paramsTuple?: []; params?: {} }
     'new_account.store': { paramsTuple?: []; params?: {} }
     'session.store': { paramsTuple?: []; params?: {} }
     'logout': { paramsTuple?: []; params?: {} }
@@ -81,16 +97,19 @@ export type ScannedRoutes = {
     'tags.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'quartiers.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'places.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'reviews.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   PATCH: {
     'tags.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'quartiers.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'places.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'reviews.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
   DELETE: {
     'tags.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'quartiers.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'places.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'reviews.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
   }
 }
 declare module '@adonisjs/core/types/http' {
