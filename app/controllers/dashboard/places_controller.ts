@@ -1,7 +1,9 @@
 import Place from '#models/place'
 import Quartier from '#models/quartier'
+import Tag from '#models/tag'
 import PlaceTransformer from '#transformers/place_transformer'
 import QuartierTransformer from '#transformers/quartier_transformer'
+import TagTransformer from '#transformers/tag_transformer'
 import { placeValidator } from '#validators/place'
 import stringHelpers from '@adonisjs/core/helpers/string'
 import type { HttpContext } from '@adonisjs/core/http'
@@ -29,9 +31,11 @@ export default class PlacesController {
   async create({ inertia }: HttpContext) {
     let place = new Place()
     const quartiers = await Quartier.all()
+    const tags = await Tag.all()
     return inertia.render('admin/places/form', {
       place: PlaceTransformer.transform(place),
       quartiers: QuartierTransformer.transform(quartiers),
+      tags: TagTransformer.transform(tags),
     })
   }
 
@@ -46,8 +50,10 @@ export default class PlacesController {
 
   private async handleRequest(params: HttpContext['params'], request: HttpContext['request']) {
     const place = params.id ? await Place.findByOrFail('id', params.id) : new Place()
-    const { cover_photo: coverPhoto, ...data } = await request.validateUsing(placeValidator)
+    const { cover_photo: coverPhoto, tags, ...data } = await request.validateUsing(placeValidator)
     await place.merge(data).save()
+    await place.related('tags').sync(tags)
+
     if (coverPhoto) {
       if (place.coverPhoto) {
         await drive.use().delete(place.coverPhoto)
@@ -66,10 +72,13 @@ export default class PlacesController {
   async edit({ params, inertia }: HttpContext) {
     const place = await Place.findByOrFail('id', params.id)
     await place.load('quartier')
+    await place.load('tags')
     const quartiers = await Quartier.all()
+    const tags = await Tag.all()
     return inertia.render('admin/places/form', {
       place: PlaceTransformer.transform(place),
       quartiers: QuartierTransformer.transform(quartiers),
+      tags: TagTransformer.transform(tags),
     })
   }
 

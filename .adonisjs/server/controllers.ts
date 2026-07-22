@@ -8,9 +8,11 @@ export const controllers = {
     Dashboard: () => import('#controllers/dashboard/dashboard_controller'),
     Places: () => import('#controllers/dashboard/places_controller'),
     Quartiers: () => import('#controllers/dashboard/quartiers_controller'),
-    Tags: () => import('#controllers/dashboard/tags_controller'),
     Reviews: () => import('#controllers/dashboard/reviews_controller'),
+    Tags: () => import('#controllers/dashboard/tags_controller'),
   },
+  Explorers: () => import('#controllers/explorers_controller'),
+  Home: () => import('#controllers/home_controller'),
   NewAccount: () => import('#controllers/new_account_controller'),
   Session: () => import('#controllers/session_controller'),
   settings: {

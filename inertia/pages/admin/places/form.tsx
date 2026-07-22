@@ -18,6 +18,8 @@ import { InertiaProps } from '~/types'
 import { Data } from '@generated/data'
 import { urlFor } from '~/client'
 import { ImageInput } from '~/components/ui/image-dropzone'
+import { useState } from 'react'
+import { MultiSelect } from '~/components/ui/multi-select'
 
 const Breadcrumbs: BreadcrumbItem[] = [
   {
@@ -35,10 +37,13 @@ const PRICE_RANGES = ['$', '$$', '$$$'] as const
 type Props = InertiaProps<{
   place: Data.Place
   quartiers: Data.Quartier[]
+  tags: Data.Tag[]
 }>
 
-function TagEditPage({ place, quartiers }: Props) {
-  console.log(place)
+function TagEditPage({ place, quartiers, tags }: Props) {
+  const [selectedTags, setSelectedTags] = useState<string[]>(
+    place?.tags?.map((tag) => tag.id.toString()) ?? []
+  )
 
   return (
     <Form
@@ -98,6 +103,18 @@ function TagEditPage({ place, quartiers }: Props) {
                 ))}
               </SelectContent>
             </Select>
+          </FormField>
+
+          <FormField htmlFor="tags" label="Tags" error={errors.tags}>
+            <MultiSelect
+              id="tags"
+              name="tags[]"
+              ariaInvalid={!!errors.tags}
+              placeholder="Sélectionner des tags"
+              options={tags.map((tag) => ({ value: tag.id.toString(), label: tag.label }))}
+              value={selectedTags}
+              onChange={setSelectedTags}
+            />
           </FormField>
 
           <FormField htmlFor="description" label="Description" error={errors.description}>

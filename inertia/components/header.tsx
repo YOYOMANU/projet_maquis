@@ -1,4 +1,12 @@
+import { Link } from '@adonisjs/inertia/react'
+import { routes } from '@generated/registry'
+import { usePage } from '@inertiajs/react'
+import { urlFor } from '~/client'
+import { Button } from './ui/button'
+
 export default function Header() {
+  const url = usePage().url
+
   return (
     <header className="app-header">
       <div className="logo">
@@ -20,10 +28,15 @@ export default function Header() {
           Rechercher un maquis, un plat, un quartier…
         </div>
         <nav className="nav-links">
-          <a className="on" href="#">
+          <Link className={url === routes.home.pattern ? 'on' : ''} href={urlFor('home')}>
             Feed
-          </a>
-          <a href="#">Explorer</a>
+          </Link>
+          <Link
+            href={urlFor('explorer')}
+            className={url.startsWith(routes.explorer.pattern) ? 'on' : ''}
+          >
+            Explorer
+          </Link>
           <a href="#">Mes listes</a>
           <a href="#">Profil</a>
         </nav>
@@ -31,6 +44,9 @@ export default function Header() {
       <div className="header-right">
         <div className="icon-btn">＋</div>
         <div className="avatar">Y</div>
+        <Button asChild>
+          <Link href={urlFor('dashboard')}>Dashboard</Link>
+        </Button>
       </div>
     </header>
   )

@@ -1,58 +1,11 @@
-import { ReviewCard } from '~/components/ReviewCard'
 import { SidebarBlock } from '~/components/SidebarBlock'
 import { TrendList } from '~/components/TrendList'
 import { PopularList } from '~/components/PopularList'
 import { MiniMap } from '~/components/MiniMap'
-import type { Review, TrendEntry, PopularPlace } from '~/types/index'
-
-const reviews: Review[] = [
-  {
-    id: '1',
-    photoLabel: 'Attiéké poisson braisé',
-    placeName: 'Chez Tantie Awa',
-    placeMeta: 'Cocody · Riviera Golf — Maquis de quartier',
-    rating: 5,
-    tags: [
-      { label: 'Cocody', type: 'quartier' },
-      { label: '$$', type: 'prix' },
-      { label: 'Entre potes', type: 'ambiance' },
-    ],
-    text: "Le poisson braisé le plus fondant de la Riviera. On y va après 21h pour le vrai coup de feu, quand la braise tourne encore. L'attiéké maison change tout.",
-    authorName: 'Josiane K.',
-    timeAgo: 'il y a 3h',
-    addedTo: 'Garba avant minuit',
-  },
-  {
-    id: '2',
-    photoLabel: 'Salle terrasse',
-    placeName: 'Le Petit Marcory',
-    placeMeta: 'Marcory Zone 4 — Restaurant',
-    rating: 4,
-    tags: [
-      { label: 'Marcory', type: 'quartier' },
-      { label: '$$$', type: 'prix' },
-      { label: 'Romantique', type: 'ambiance' },
-    ],
-    text: "Coin tranquille, lumière tamisée, service impeccable. Le kedjenou de pintade mérite le déplacement. Un peu cher pour la portion, mais l'ambiance justifie tout.",
-    authorName: 'Bertrand A.',
-    timeAgo: 'il y a 7h',
-  },
-  {
-    id: '3',
-    photoLabel: 'Garba, dressage',
-    placeName: 'Garba de la Gare',
-    placeMeta: 'Yopougon Selmer — Street-food',
-    rating: 5,
-    tags: [
-      { label: 'Yopougon', type: 'quartier' },
-      { label: '$', type: 'prix' },
-      { label: 'Rapide', type: 'ambiance' },
-    ],
-    text: "Le thon est toujours frais, le piment juste assez fort. C'est bruyant, c'est rapide, c'est parfait à minuit passé.",
-    authorName: 'Fatou D.',
-    timeAgo: 'hier',
-  },
-]
+import type { TrendEntry, PopularPlace, Meta } from '~/types/index'
+import { Data } from '@generated/data'
+import AppPagination from './app-pagination'
+import { PlaceCard } from './PlaceCard'
 
 const trends: TrendEntry[] = [
   { rank: 1, name: 'Chez Tantie Awa', score: 4.9 },
@@ -67,7 +20,12 @@ const popular: PopularPlace[] = [
   { name: 'Le Bambou Doré', duration: '12 min' },
 ]
 
-export default function FeedLayout() {
+type Props = {
+  data: Data.Place.Variants['forDetailPlace'][]
+  metadata: Meta
+}
+
+export default function FeedLayout({ data, metadata }: Props) {
   return (
     <div className="feed-layout">
       <div>
@@ -77,8 +35,8 @@ export default function FeedLayout() {
         </div>
         <div className="feed-sub">247 nouveaux avis publiés cette semaine</div>
 
-        {reviews.map((review) => (
-          <ReviewCard key={review.id} review={review} />
+        {data.map((place) => (
+          <PlaceCard key={place.id} place={place} />
         ))}
       </div>
 
@@ -95,6 +53,7 @@ export default function FeedLayout() {
           <PopularList places={popular} />
         </SidebarBlock>
       </div>
+      <AppPagination meta={metadata} route="home" />
     </div>
   )
 }

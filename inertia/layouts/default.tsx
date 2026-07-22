@@ -16,9 +16,6 @@ export default function Layout({ children }: { children: ReactElement<Data.Share
       toast.success(children.props.flash.success)
     }
   })
-
-  console.log(children.props)
-
   return (
     <>
       <main>{children}</main>

@@ -6,6 +6,7 @@ import {
   HamburgerIcon,
   HomeIcon,
   LayoutGrid,
+  MapPin,
   TagPlusIcon,
 } from 'lucide-react'
 import AppLogo from '~/components/app-logo'
@@ -27,6 +28,11 @@ import { urlFor } from '~/client'
 
 const mainNavItems: NavItem[] = [
   {
+    title: 'Accueil',
+    href: urlFor('home'),
+    icon: HomeIcon,
+  },
+  {
     title: 'Dashboard',
     href: urlFor('dashboard'),
     icon: LayoutGrid,
@@ -39,7 +45,7 @@ const mainNavItems: NavItem[] = [
   {
     title: 'Quartier',
     href: urlFor('quartiers.index'),
-    icon: HomeIcon,
+    icon: MapPin,
   },
   {
     title: 'Places',

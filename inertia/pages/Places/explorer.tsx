@@ -1,22 +1,28 @@
 import { Data } from '@generated/data'
-import FeedLayout from '~/components/feed-layout'
 import Header from '~/components/header'
+import { SearchLayout } from '~/components/search-layout'
 import { InertiaProps } from '~/types'
 import { Meta } from '~/types/index'
 
 type Props = InertiaProps<{
   places: {
-    data: Data.Place.Variants['forDetailPlace'][]
+    data: Data.Place[]
     metadata: Meta
   }
 }>
 
-export default function Home({ places }: Props) {
+export default function Explorer({ places }: Props) {
   const { data, metadata } = places
+
   return (
     <>
       <Header />
-      <FeedLayout data={data} metadata={metadata} />
+      <SearchLayout
+        results={data}
+        metadata={metadata}
+        count={metadata.total}
+        title="Street-food · Cocody"
+      />
     </>
   )
 }

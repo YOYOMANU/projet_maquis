@@ -6,6 +6,8 @@ export type ScannedRoutes = {
   ALL: {
     'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
     'home': { paramsTuple?: []; params?: {} }
+    'explorer': { paramsTuple?: []; params?: {} }
+    'explorer.show': { paramsTuple: [ParamValue,ParamValue]; params: {'id': ParamValue,'slug': ParamValue} }
     'dashboard': { paramsTuple?: []; params?: {} }
     'tags.index': { paramsTuple?: []; params?: {} }
     'tags.create': { paramsTuple?: []; params?: {} }
@@ -43,6 +45,8 @@ export type ScannedRoutes = {
   GET: {
     'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
     'home': { paramsTuple?: []; params?: {} }
+    'explorer': { paramsTuple?: []; params?: {} }
+    'explorer.show': { paramsTuple: [ParamValue,ParamValue]; params: {'id': ParamValue,'slug': ParamValue} }
     'dashboard': { paramsTuple?: []; params?: {} }
     'tags.index': { paramsTuple?: []; params?: {} }
     'tags.create': { paramsTuple?: []; params?: {} }
@@ -65,6 +69,8 @@ export type ScannedRoutes = {
   HEAD: {
     'drive.fs.serve': { paramsTuple: [...ParamValue[]]; params: {'*': ParamValue[]} }
     'home': { paramsTuple?: []; params?: {} }
+    'explorer': { paramsTuple?: []; params?: {} }
+    'explorer.show': { paramsTuple: [ParamValue,ParamValue]; params: {'id': ParamValue,'slug': ParamValue} }
     'dashboard': { paramsTuple?: []; params?: {} }
     'tags.index': { paramsTuple?: []; params?: {} }
     'tags.create': { paramsTuple?: []; params?: {} }

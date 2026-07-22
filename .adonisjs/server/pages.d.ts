@@ -16,6 +16,8 @@ declare module '@adonisjs/inertia/types' {
     'admin/places/index': ExtractProps<(typeof import('../../inertia/pages/admin/places/index.tsx'))['default']>
     'admin/quartier/form': ExtractProps<(typeof import('../../inertia/pages/admin/quartier/form.tsx'))['default']>
     'admin/quartier/index': ExtractProps<(typeof import('../../inertia/pages/admin/quartier/index.tsx'))['default']>
+    'admin/review/form': ExtractProps<(typeof import('../../inertia/pages/admin/review/form.tsx'))['default']>
+    'admin/review/index': ExtractProps<(typeof import('../../inertia/pages/admin/review/index.tsx'))['default']>
     'admin/tag/form': ExtractProps<(typeof import('../../inertia/pages/admin/tag/form.tsx'))['default']>
     'admin/tag/index': ExtractProps<(typeof import('../../inertia/pages/admin/tag/index.tsx'))['default']>
     'auth/confirm-password': ExtractProps<(typeof import('../../inertia/pages/auth/confirm-password.tsx'))['default']>
@@ -30,10 +32,10 @@ declare module '@adonisjs/inertia/types' {
     'errors/not_found': ExtractProps<(typeof import('../../inertia/pages/errors/not_found.tsx'))['default']>
     'errors/server_error': ExtractProps<(typeof import('../../inertia/pages/errors/server_error.tsx'))['default']>
     'home': ExtractProps<(typeof import('../../inertia/pages/home.tsx'))['default']>
+    'Places/explorer': ExtractProps<(typeof import('../../inertia/pages/Places/explorer.tsx'))['default']>
+    'Places/show': ExtractProps<(typeof import('../../inertia/pages/Places/show.tsx'))['default']>
     'settings/appearance': ExtractProps<(typeof import('../../inertia/pages/settings/appearance.tsx'))['default']>
     'settings/profile': ExtractProps<(typeof import('../../inertia/pages/settings/profile.tsx'))['default']>
     'settings/security': ExtractProps<(typeof import('../../inertia/pages/settings/security.tsx'))['default']>
-    'admin/review/form': ExtractProps<(typeof import('../../inertia/pages/admin/review/form.tsx'))['default']>
-    'admin/review/index': ExtractProps<(typeof import('../../inertia/pages/admin/review/index.tsx'))['default']>
   }
 }

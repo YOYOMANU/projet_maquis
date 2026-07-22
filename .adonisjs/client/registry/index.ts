@@ -18,6 +18,18 @@ const routes = {
     tokens: [{"old":"/","type":0,"val":"/","end":""}],
     types: placeholder as Registry['home']['types'],
   },
+  'explorer': {
+    methods: ["GET","HEAD"],
+    pattern: '/explorer',
+    tokens: [{"old":"/explorer","type":0,"val":"explorer","end":""}],
+    types: placeholder as Registry['explorer']['types'],
+  },
+  'explorer.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/explorer/:id/:slug',
+    tokens: [{"old":"/explorer/:id/:slug","type":0,"val":"explorer","end":""},{"old":"/explorer/:id/:slug","type":1,"val":"id","end":""},{"old":"/explorer/:id/:slug","type":1,"val":"slug","end":""}],
+    types: placeholder as Registry['explorer.show']['types'],
+  },
   'dashboard': {
     methods: ["GET","HEAD"],
     pattern: '/dashboard',

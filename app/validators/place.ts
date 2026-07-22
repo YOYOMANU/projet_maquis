@@ -8,5 +8,6 @@ export const placeValidator = vine.compile(
     price_range: vine.enum(['$', '$$', '$$$']),
     description: vine.string().optional(),
     quartier_id: vine.number().exists({ table: 'quartiers', column: 'id' }),
+    tags: vine.array(vine.number().exists({ table: 'tags', column: 'id' })),
   })
 )

@@ -36,6 +36,7 @@ type Props = InertiaProps<{
 
 export default withAppLayout(breadCrumbs, ({ reviews }: Props) => {
   const { data, metadata } = reviews
+
   return (
     <>
       <TopAction>

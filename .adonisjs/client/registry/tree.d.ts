@@ -8,6 +8,9 @@ export interface ApiDefinition {
     }
   }
   home: typeof routes['home']
+  explorer: typeof routes['explorer'] & {
+    show: typeof routes['explorer.show']
+  }
   dashboard: typeof routes['dashboard']
   tags: {
     index: typeof routes['tags.index']

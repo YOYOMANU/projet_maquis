@@ -31,6 +31,30 @@ export interface Registry {
       errorResponse: unknown
     }
   }
+  'explorer': {
+    methods: ["GET","HEAD"]
+    pattern: '/explorer'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
+  'explorer.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/explorer/:id/:slug'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue, ParamValue]
+      params: { id: ParamValue; slug: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
   'dashboard': {
     methods: ["GET","HEAD"]
     pattern: '/dashboard'

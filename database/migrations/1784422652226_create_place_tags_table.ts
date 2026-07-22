@@ -7,6 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.integer('place_id').unsigned().references('id').inTable('places').onDelete('CASCADE')
       table.integer('tag_id').unsigned().references('id').inTable('tags').onDelete('CASCADE')
+      table.primary(['place_id', 'tag_id'])
     })
   }
 

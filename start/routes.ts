@@ -18,8 +18,19 @@ import SecurityController from '#controllers/settings/security_controller'
 import QuartiersController from '#controllers/dashboard/quartiers_controller'
 import PlacesController from '#controllers/dashboard/places_controller'
 import ReviewsController from '#controllers/dashboard/reviews_controller'
+import HomeController from '#controllers/home_controller'
+import ExplorersController from '#controllers/explorers_controller'
 
-router.on('/').renderInertia('home', {}).as('home')
+// Public path
+router.get('/', [HomeController, 'index']).as('home')
+router.get('/explorer', [ExplorersController, 'explorer']).as('explorer')
+router
+  .get('/explorer/:id/:slug', [ExplorersController, 'show'])
+  .as('explorer.show')
+  .where('id', router.matchers.number())
+  .where('slug', router.matchers.slug())
+
+// Dashboard Admin
 router
   .group(() => {
     router.get('/', [DashboardController, 'index']).as('dashboard').use(middleware.auth())
@@ -31,6 +42,7 @@ router
   .prefix('/dashboard')
   .use(middleware.auth())
 
+// Settings profile
 router
   .group(() => {
     router.get('settings/profile', [ProfileController, 'edit']).as('profile.edit')
