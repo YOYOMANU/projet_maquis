@@ -7,6 +7,7 @@ import { Data } from '@generated/data'
 import type { Meta } from '~/types/index'
 import Header from './header'
 import AppPagination from './app-pagination'
+import ReviewDrawer from './review-drawer'
 
 function Stars({ count }: { count: number }) {
   return (
@@ -26,7 +27,6 @@ const RATING_LABELS: Record<number, string> = {
 }
 
 function computeRatingBreakdown(reviews: Data.Review[] | undefined, total: number) {
-  // Compte le nombre d'avis par note (1 à 5)
   const counts: Record<number, number> = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 }
 
   reviews?.forEach((review) => {
@@ -51,9 +51,10 @@ type Props = {
   place: Data.Place.Variants['forDetailPlace']
   reviews: Data.Review[]
   meta: Meta
+  ambianceTags: Data.Tag[]
 }
 
-export default function PlaceDetail({ place, reviews, meta }: Props) {
+export default function PlaceDetail({ place, reviews, meta, ambianceTags }: Props) {
   const total = reviews.map((r) => r.comment).length
   const FILTERS = [
     `Tous les avis (${total})`,
@@ -233,6 +234,13 @@ export default function PlaceDetail({ place, reviews, meta }: Props) {
                     <span className="text-right font-bold">{info.value}</span>
                   </div>
                 ))}
+                {/* En-tête section avis + bouton */}
+                <div className="mb-4 flex-col space-y-2 flex items-center justify-between">
+                  <div className="text-sm  text-text-dim">
+                    {total} avis · {place.avg_rating}/5
+                  </div>
+                  <ReviewDrawer place={place} ambianceTags={ambianceTags} />
+                </div>
               </div>
             </CardContent>
           </Card>

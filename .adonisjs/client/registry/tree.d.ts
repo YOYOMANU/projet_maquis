@@ -11,6 +11,11 @@ export interface ApiDefinition {
   explorer: typeof routes['explorer'] & {
     show: typeof routes['explorer.show']
   }
+  user: {
+    reviews: {
+      store: typeof routes['user.reviews.store']
+    }
+  }
   dashboard: typeof routes['dashboard']
   tags: {
     index: typeof routes['tags.index']

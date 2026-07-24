@@ -55,6 +55,18 @@ export interface Registry {
       errorResponse: unknown
     }
   }
+  'user.reviews.store': {
+    methods: ["POST"]
+    pattern: '/places/:placeId/reviews'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { placeId: ParamValue }
+      query: {}
+      response: unknown
+      errorResponse: unknown
+    }
+  }
   'dashboard': {
     methods: ["GET","HEAD"]
     pattern: '/dashboard'

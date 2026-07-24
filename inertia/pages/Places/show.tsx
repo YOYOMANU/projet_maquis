@@ -9,8 +9,16 @@ type Props = InertiaProps<{
     data: Data.Review[]
     metadata: Meta
   }
+  ambianceTags: Data.Tag[]
 }>
 
-export default function ShowPlace({ place, reviews }: Props) {
-  return <PlaceDetail reviews={reviews.data} meta={reviews.metadata} place={place} />
+export default function ShowPlace({ place, reviews, ambianceTags }: Props) {
+  return (
+    <PlaceDetail
+      ambianceTags={ambianceTags}
+      reviews={reviews.data}
+      meta={reviews.metadata}
+      place={place}
+    />
+  )
 }

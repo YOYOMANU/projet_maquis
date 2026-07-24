@@ -293,7 +293,7 @@
 
   /* ---------- HEADER (partagé) ---------- */
   .app-header {
-    @apply sticky top-[3px] z-[100] flex items-center justify-between border-b border-line px-[52px] py-[22px] backdrop-blur-[14px];
+    @apply top-0 z-[100] flex items-center justify-between border-b border-line px-[52px] py-[22px] backdrop-blur-[14px];
     background-color: color-mix(in oklab, var(--bg) 82%, transparent);
   }
   .logo {

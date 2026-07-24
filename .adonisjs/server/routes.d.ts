@@ -8,6 +8,7 @@ export type ScannedRoutes = {
     'home': { paramsTuple?: []; params?: {} }
     'explorer': { paramsTuple?: []; params?: {} }
     'explorer.show': { paramsTuple: [ParamValue,ParamValue]; params: {'id': ParamValue,'slug': ParamValue} }
+    'user.reviews.store': { paramsTuple: [ParamValue]; params: {'placeId': ParamValue} }
     'dashboard': { paramsTuple?: []; params?: {} }
     'tags.index': { paramsTuple?: []; params?: {} }
     'tags.create': { paramsTuple?: []; params?: {} }
@@ -91,6 +92,7 @@ export type ScannedRoutes = {
     'login': { paramsTuple?: []; params?: {} }
   }
   POST: {
+    'user.reviews.store': { paramsTuple: [ParamValue]; params: {'placeId': ParamValue} }
     'tags.store': { paramsTuple?: []; params?: {} }
     'quartiers.store': { paramsTuple?: []; params?: {} }
     'places.store': { paramsTuple?: []; params?: {} }

@@ -1,8 +1,15 @@
 import { Link } from '@adonisjs/inertia/react'
-import { routes } from '@generated/registry'
 import { usePage } from '@inertiajs/react'
+import { routes } from '@generated/registry'
+import { LayoutDashboardIcon, LogOutIcon, UserIcon } from 'lucide-react'
 import { urlFor } from '~/client'
-import { Button } from './ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu'
 
 export default function Header() {
   const url = usePage().url
@@ -12,6 +19,7 @@ export default function Header() {
       <div className="logo">
         <span className="mark"></span>MAQU<em>i</em>S
       </div>
+
       <div className="header-center">
         <div className="search-box">
           <svg
@@ -27,8 +35,9 @@ export default function Header() {
           </svg>
           Rechercher un maquis, un plat, un quartier…
         </div>
+
         <nav className="nav-links">
-          <Link className={url === routes.home.pattern ? 'on' : ''} href={urlFor('home')}>
+          <Link href={urlFor('home')} className={url === routes.home.pattern ? 'on' : ''}>
             Feed
           </Link>
           <Link
@@ -38,15 +47,36 @@ export default function Header() {
             Explorer
           </Link>
           <a href="#">Mes listes</a>
-          <a href="#">Profil</a>
         </nav>
       </div>
+
       <div className="header-right">
-        <div className="icon-btn">＋</div>
-        <div className="avatar">Y</div>
-        <Button asChild>
-          <Link href={urlFor('dashboard')}>Dashboard</Link>
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button className="avatar cursor-pointer">Y</button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="z-200 w-48">
+            <DropdownMenuItem asChild>
+              <Link href={urlFor('dashboard')} className="flex items-center gap-2">
+                <LayoutDashboardIcon size={16} />
+                Dashboard
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link href={urlFor('profile.edit')} className="flex items-center gap-2">
+                <UserIcon size={16} />
+                Profil
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem asChild variant="destructive">
+              <Link href={urlFor('logout')}>
+                <LogOutIcon size={16} />
+                Déconnexion
+              </Link>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </header>
   )

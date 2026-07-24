@@ -19,4 +19,5 @@ export const controllers = {
     Profile: () => import('#controllers/settings/profile_controller'),
     Security: () => import('#controllers/settings/security_controller'),
   },
+  UserReviews: () => import('#controllers/user_reviews_controller'),
 }

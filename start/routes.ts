@@ -20,6 +20,7 @@ import PlacesController from '#controllers/dashboard/places_controller'
 import ReviewsController from '#controllers/dashboard/reviews_controller'
 import HomeController from '#controllers/home_controller'
 import ExplorersController from '#controllers/explorers_controller'
+import UserReviewsController from '#controllers/user_reviews_controller'
 
 // Public path
 router.get('/', [HomeController, 'index']).as('home')
@@ -29,6 +30,10 @@ router
   .as('explorer.show')
   .where('id', router.matchers.number())
   .where('slug', router.matchers.slug())
+router
+  .post('/places/:placeId/reviews', [UserReviewsController, 'store'])
+  .as('user.reviews.store')
+  .use(middleware.auth())
 
 // Dashboard Admin
 router

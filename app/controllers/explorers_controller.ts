@@ -1,7 +1,9 @@
 import Place from '#models/place'
 import Review from '#models/review'
+import Tag from '#models/tag'
 import PlaceTransformer from '#transformers/place_transformer'
 import ReviewTransformer from '#transformers/review_transformer'
+import TagTransformer from '#transformers/tag_transformer'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class ExplorersController {
@@ -34,11 +36,14 @@ export default class ExplorersController {
       .orderBy('createdAt', 'desc')
       .paginate(page, perPage)
 
+    const ambianceTags = await Tag.query().where('type', 'ambiance')
+
     return inertia.render('Places/show', {
       place: PlaceTransformer.transform(place).useVariant('forDetailPlace'),
       reviews: ReviewTransformer.paginate(reviewsPaginated.all(), reviewsPaginated.getMeta()).depth(
         2
       ),
+      ambianceTags: TagTransformer.transform(ambianceTags),
     })
   }
 }

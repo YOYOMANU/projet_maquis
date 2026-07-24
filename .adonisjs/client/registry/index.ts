@@ -30,6 +30,12 @@ const routes = {
     tokens: [{"old":"/explorer/:id/:slug","type":0,"val":"explorer","end":""},{"old":"/explorer/:id/:slug","type":1,"val":"id","end":""},{"old":"/explorer/:id/:slug","type":1,"val":"slug","end":""}],
     types: placeholder as Registry['explorer.show']['types'],
   },
+  'user.reviews.store': {
+    methods: ["POST"],
+    pattern: '/places/:placeId/reviews',
+    tokens: [{"old":"/places/:placeId/reviews","type":0,"val":"places","end":""},{"old":"/places/:placeId/reviews","type":1,"val":"placeId","end":""},{"old":"/places/:placeId/reviews","type":0,"val":"reviews","end":""}],
+    types: placeholder as Registry['user.reviews.store']['types'],
+  },
   'dashboard': {
     methods: ["GET","HEAD"],
     pattern: '/dashboard',
