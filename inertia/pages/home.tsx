@@ -6,7 +6,7 @@ import { Meta } from '~/types/index'
 
 type Props = InertiaProps<{
   places: {
-    data: Data.Place.Variants['forDetailPlace'][]
+    data: Data.Place[]
     metadata: Meta
   }
 }>

@@ -11,7 +11,7 @@ export default class ExplorersController {
 
     const places = await Place.query()
       .preload('quartier')
-      .preload('tags')
+      .preload('tag')
       .preload('reviews')
       .paginate(page, limit)
 
@@ -23,7 +23,7 @@ export default class ExplorersController {
   async show({ inertia, params, request }: HttpContext) {
     const place = await Place.findByOrFail('id', params.id)
     await place.load('quartier')
-    await place.load('tags')
+    await place.load('tag')
 
     const page = request.input('page', 1)
     const perPage = 5
@@ -35,11 +35,10 @@ export default class ExplorersController {
       .paginate(page, perPage)
 
     return inertia.render('Places/show', {
-      place: PlaceTransformer.transform(place),
+      place: PlaceTransformer.transform(place).useVariant('forDetailPlace'),
       reviews: ReviewTransformer.paginate(reviewsPaginated.all(), reviewsPaginated.getMeta()).depth(
         2
       ),
-      // meta: reviewsPaginated.getMeta(),
     })
   }
 }

@@ -35,9 +35,7 @@ export function ResultCard({ item }: Props) {
           <Badge className="tag prix" variant={'outline'}>
             {item.priceRange}
           </Badge>
-          {item.tags?.map((tag) => (
-            <Badge key={tag.id}>{tag.label}</Badge>
-          ))}
+          <Badge key={item.tag?.id}>{item.tag?.label}</Badge>
         </div>
       </div>
     </>

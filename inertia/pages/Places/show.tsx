@@ -4,7 +4,7 @@ import { InertiaProps } from '~/types'
 import { Meta } from '~/types/index'
 
 type Props = InertiaProps<{
-  place: Data.Place
+  place: Data.Place.Variants['forDetailPlace']
   reviews: {
     data: Data.Review[]
     metadata: Meta

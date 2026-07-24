@@ -18,8 +18,6 @@ import { InertiaProps } from '~/types'
 import { Data } from '@generated/data'
 import { urlFor } from '~/client'
 import { ImageInput } from '~/components/ui/image-dropzone'
-import { useState } from 'react'
-import { MultiSelect } from '~/components/ui/multi-select'
 
 const Breadcrumbs: BreadcrumbItem[] = [
   {
@@ -41,12 +39,6 @@ type Props = InertiaProps<{
 }>
 
 function TagEditPage({ place, quartiers, tags }: Props) {
-  console.log(tags)
-
-  const [selectedTags, setSelectedTags] = useState<string[]>(
-    place?.tags?.map((tag) => tag.id.toString()) ?? []
-  )
-
   return (
     <Form
       route={place.id ? 'places.update' : 'places.store'}
@@ -107,16 +99,19 @@ function TagEditPage({ place, quartiers, tags }: Props) {
             </Select>
           </FormField>
 
-          <FormField htmlFor="tags" label="Tags" error={errors.tags}>
-            <MultiSelect
-              id="tags"
-              name="tags[]"
-              ariaInvalid={!!errors.tags}
-              placeholder="Sélectionner des tags"
-              options={tags.map((tag) => ({ value: tag.id.toString(), label: tag.label }))}
-              value={selectedTags}
-              onChange={setSelectedTags}
-            />
+          <FormField htmlFor="tag_id" label="Tag" error={errors.tag_id}>
+            <Select name="tag_id" defaultValue={place.tag?.id.toString()}>
+              <SelectTrigger id="tag_id" aria-invalid={!!errors.price_range}>
+                <SelectValue placeholder="Sélectionner un tag" />
+              </SelectTrigger>
+              <SelectContent>
+                {tags.map((tag) => (
+                  <SelectItem key={tag.id} value={tag.id.toString()}>
+                    {tag.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </FormField>
 
           <FormField htmlFor="description" label="Description" error={errors.description}>

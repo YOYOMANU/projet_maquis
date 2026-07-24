@@ -14,9 +14,7 @@ export default class HomeController {
       .paginate(page, limit)
 
     return inertia.render('home', {
-      places: PlaceTransformer.paginate(places.all(), places.getMeta()).useVariant(
-        'forDetailPlace'
-      ),
+      places: PlaceTransformer.paginate(places.all(), places.getMeta()),
     })
   }
 }

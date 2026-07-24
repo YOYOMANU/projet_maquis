@@ -7,17 +7,8 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
-export class PlaceTagSchema extends BaseModel {
-  static $columns = ['placeId', 'tagId'] as const
-  $columns = PlaceTagSchema.$columns
-  @column()
-  declare placeId: number | null
-  @column()
-  declare tagId: number | null
-}
-
 export class PlaceSchema extends BaseModel {
-  static $columns = ['address', 'avgRating', 'coverPhoto', 'createdAt', 'description', 'id', 'latitude', 'longitude', 'name', 'priceRange', 'quartierId', 'reviewCount', 'slug', 'updatedAt', 'weightedScore'] as const
+  static $columns = ['address', 'avgRating', 'coverPhoto', 'createdAt', 'description', 'id', 'latitude', 'longitude', 'name', 'priceRange', 'quartierId', 'reviewCount', 'slug', 'tagId', 'updatedAt', 'weightedScore'] as const
   $columns = PlaceSchema.$columns
   @column()
   declare address: string | null
@@ -45,6 +36,8 @@ export class PlaceSchema extends BaseModel {
   declare reviewCount: number
   @column()
   declare slug: string
+  @column()
+  declare tagId: number | null
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
   @column()
@@ -112,8 +105,10 @@ export class TagSchema extends BaseModel {
 }
 
 export class UserSchema extends BaseModel {
-  static $columns = ['avatarUrl', 'createdAt', 'email', 'fullName', 'id', 'isAdmin', 'password', 'updatedAt'] as const
+  static $columns = ['avatar', 'avatarUrl', 'createdAt', 'email', 'fullName', 'id', 'isAdmin', 'password', 'updatedAt'] as const
   $columns = UserSchema.$columns
+  @column()
+  declare avatar: string | null
   @column()
   declare avatarUrl: string | null
   @column.dateTime({ autoCreate: true })

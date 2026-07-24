@@ -14,6 +14,7 @@ export default class extends BaseSchema {
         .references('id')
         .inTable('quartiers')
         .onDelete('RESTRICT')
+      table.integer('tag_id').unsigned().references('id').inTable('tags').onDelete('CASCADE')
       table.string('cover_photo').nullable()
       table.string('address').nullable()
       table.decimal('latitude', 10, 7).nullable()

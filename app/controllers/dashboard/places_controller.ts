@@ -50,9 +50,8 @@ export default class PlacesController {
 
   private async handleRequest(params: HttpContext['params'], request: HttpContext['request']) {
     const place = params.id ? await Place.findByOrFail('id', params.id) : new Place()
-    const { cover_photo: coverPhoto, tags, ...data } = await request.validateUsing(placeValidator)
+    const { cover_photo: coverPhoto, ...data } = await request.validateUsing(placeValidator)
     await place.merge(data).save()
-    await place.related('tags').sync(tags)
 
     if (coverPhoto) {
       if (place.coverPhoto) {
@@ -72,7 +71,7 @@ export default class PlacesController {
   async edit({ params, inertia }: HttpContext) {
     const place = await Place.findByOrFail('id', params.id)
     await place.load('quartier')
-    await place.load('tags')
+    await place.load('tag')
     const quartiers = await Quartier.all()
     const tags = await Tag.query().where('type', 'place_type')
     return inertia.render('admin/places/form', {

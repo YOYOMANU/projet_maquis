@@ -17,8 +17,17 @@ export default class PlaceTransformer extends BaseTransformer<Place> {
       priceRange: this.resource.priceRange,
       address: this.resource.address,
       quartier: QuartierTransformer.transform(this.whenLoaded(this.resource.quartier)),
-      tags: TagTransformer.transform(this.whenLoaded(this.resource.tags)),
-      reviews: ReviewTransformer.transform(this.whenLoaded(this.resource.reviews)),
+      tag: TagTransformer.transform(this.whenLoaded(this.resource.tag)),
+      reviews: ReviewTransformer.transform(this.whenLoaded(this.resource.reviews))?.depth(2),
+    }
+  }
+
+  forDetailPlace() {
+    return {
+      ...this.toObject(),
+      avg_rating: this.resource.avgRating,
+      review_count: this.resource.reviewCount,
+      weighted_score: this.resource.weightedScore,
     }
   }
 }
