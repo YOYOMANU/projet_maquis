@@ -34,7 +34,7 @@ export default class ReviewsController {
     const review = new Review()
     const users = await User.all()
     const places = await Place.all()
-    const tags = await Tag.all()
+    const tags = await Tag.query().where('type', 'ambiance')
 
     return inertia.render('admin/review/form', {
       review: ReviewTransformer.transform(review),
@@ -69,7 +69,7 @@ export default class ReviewsController {
 
     const users = await User.all()
     const places = await Place.all()
-    const tags = await Tag.all()
+    const tags = await Tag.query().where('type', 'ambiance')
 
     return inertia.render('admin/review/form', {
       review: ReviewTransformer.transform(review),

@@ -5,16 +5,8 @@ import { Progress } from '~/components/ui/progress'
 import { MapPin, Clock, Wallet, UtensilsCrossed, Navigation } from 'lucide-react'
 import { Data } from '@generated/data'
 import Header from './header'
-
-// --- Données de démo (à remplacer par vos props / fetch) ---
-
-const HERO = {
-  eyebrow: 'Maquis de quartier · Cocody',
-  title: 'Chez Tantie Awa',
-  quartier: 'Riviera Golf',
-  prix: '$$',
-  ambiance: 'Entre potes',
-}
+import { Meta } from '~/types/index'
+import AppPagination from './app-pagination'
 
 const RATING = {
   average: 4.9,
@@ -38,10 +30,12 @@ function Stars({ count }: { count: number }) {
 }
 
 type Props = {
-  place: Data.Place.Variants['forDetailPlace']
+  place: Data.Place
+  reviews: Data.Review[] // adapte le type/variant à ton generated data
+  meta: Meta
 }
 
-export default function PlaceDetail({ place }: Props) {
+export default function PlaceDetail({ place, reviews, meta }: Props) {
   const INFOS = [
     { icon: MapPin, label: 'Quartier', value: place.quartier?.name },
     { icon: Clock, label: 'Horaires', value: '18h – 2h' },
@@ -49,12 +43,10 @@ export default function PlaceDetail({ place }: Props) {
     {
       icon: UtensilsCrossed,
       label: 'Type',
-      value: place.tags?.map((tag) => tag.label.concat('  ')),
+      value: place.tags![0].label,
     },
     { icon: Navigation, label: 'Distance', value: '2 min à pied' },
   ]
-
-  console.log(place)
 
   const [activeFilter, setActiveFilter] = useState(0)
   const [dot, setDot] = useState(0)
@@ -78,7 +70,7 @@ export default function PlaceDetail({ place }: Props) {
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-between px-8 pb-6">
           <div>
             <div className="text-xs font-medium text-[#DDAE7E]">
-              {place.tags?.map((tag) => tag.label) + ' de quartier - ' + place.quartier?.name}
+              {place.tags![0].label + ' de quartier - ' + place.quartier?.name}
             </div>
             <div className="mt-1 text-3xl font-semibold tracking-tight">{place.name}</div>
             <div className="mt-3 flex gap-2">
@@ -94,14 +86,12 @@ export default function PlaceDetail({ place }: Props) {
               >
                 {place.priceRange}
               </Badge>
-              {place.tags?.map((tag) => (
-                <Badge
-                  className="rounded-full border-neutral-700 bg-neutral-900/80 text-neutral-200"
-                  variant="outline"
-                >
-                  {tag.label}
-                </Badge>
-              ))}
+              <Badge
+                className="rounded-full border-neutral-700 bg-neutral-900/80 text-neutral-200"
+                variant="outline"
+              >
+                {place.tags![0].label}
+              </Badge>
             </div>
           </div>
 
@@ -161,7 +151,7 @@ export default function PlaceDetail({ place }: Props) {
 
           {/* Avis */}
           <div className="space-y-4">
-            {place.reviews?.map((review) => (
+            {reviews?.map((review) => (
               <Card key={review.id} className="border-neutral-800 bg-neutral-900/60">
                 <CardContent className="flex gap-4 p-4">
                   <div className="flex h-24 w-[140px] shrink-0 items-center justify-center rounded-lg bg-neutral-800 text-[11px] text-neutral-500">
@@ -180,6 +170,11 @@ export default function PlaceDetail({ place }: Props) {
                 </CardContent>
               </Card>
             ))}
+            {meta.lastPage > 1 && (
+              <div className="mt-6">
+                <AppPagination meta={meta} route="explorer.show" routeParams={{ id: place.id }} />
+              </div>
+            )}
           </div>
         </div>
 

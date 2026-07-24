@@ -41,6 +41,8 @@ type Props = InertiaProps<{
 }>
 
 function TagEditPage({ place, quartiers, tags }: Props) {
+  console.log(tags)
+
   const [selectedTags, setSelectedTags] = useState<string[]>(
     place?.tags?.map((tag) => tag.id.toString()) ?? []
   )

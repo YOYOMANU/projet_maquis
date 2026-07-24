@@ -21,11 +21,4 @@ export default class PlaceTransformer extends BaseTransformer<Place> {
       reviews: ReviewTransformer.transform(this.whenLoaded(this.resource.reviews)),
     }
   }
-
-  forDetailPlace() {
-    return {
-      ...this.toObject(),
-      reviews: ReviewTransformer.transform(this.whenLoaded(this.resource.reviews))?.depth(2),
-    }
-  }
 }

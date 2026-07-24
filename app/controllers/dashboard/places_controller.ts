@@ -31,7 +31,7 @@ export default class PlacesController {
   async create({ inertia }: HttpContext) {
     let place = new Place()
     const quartiers = await Quartier.all()
-    const tags = await Tag.all()
+    const tags = await Tag.query().where('type', 'place_type')
     return inertia.render('admin/places/form', {
       place: PlaceTransformer.transform(place),
       quartiers: QuartierTransformer.transform(quartiers),
@@ -74,7 +74,7 @@ export default class PlacesController {
     await place.load('quartier')
     await place.load('tags')
     const quartiers = await Quartier.all()
-    const tags = await Tag.all()
+    const tags = await Tag.query().where('type', 'place_type')
     return inertia.render('admin/places/form', {
       place: PlaceTransformer.transform(place),
       quartiers: QuartierTransformer.transform(quartiers),
